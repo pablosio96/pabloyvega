@@ -1,0 +1,336 @@
+/* Animation timing functions */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Countdown */
+.countdown-container {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.countdown {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.countdown-value {
+  font-size: clamp(28px, 7vw, 48px);
+  font-weight: 300;
+  color: white;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: clamp(9px, 1.8vw, 12px);
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+/* Footer row */
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.footer-divider {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 200;
+}
+
+.subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(14px, 3vw, 18px);
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hero logo */
+.hero-logo {
+  height: clamp(280px, 45vw, 450px);
+  width: auto;
+  filter: drop-shadow(0 4px 30px rgba(0, 0, 0, 0.4));
+}
+
+/* Hero date - subtitle under logo */
+.hero-date {
+  margin-top: 24px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero content - centered block */
+.hero-content {
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Home actions */
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.home-btn:hover,
+.home-btn:active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: white;
+  color: white;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  opacity: 0;
+  animation: fadeInScroll 1s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.scroll-indicator:hover .scroll-text,
+.scroll-indicator:hover .scroll-arrow {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.scroll-indicator:hover .scroll-arrow {
+  animation-duration: 0.8s;
+}
+
+.scroll-text {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.scroll-arrow {
+  color: rgba(255, 255, 255, 0.6);
+  animation: bounceArrow 2s ease-in-out infinite;
+  transition: color 0.3s ease;
+}
+
+@keyframes fadeInScroll {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Animaciones de entrada - mejoradas */
+.hero {
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out-expo);
+}
+
+.hero.hero-loaded {
+  opacity: 1;
+}
+
+.hero.hero-exiting {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: heroFadeInDown 0.8s var(--ease-out-quart) forwards;
+  animation-delay: 0.2s;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeInUp 0.8s var(--ease-out-quart) forwards;
+  animation-delay: 0.4s;
+}
+
+.fade-in-delay-2 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeInUp 0.8s var(--ease-out-quart) forwards;
+  animation-delay: 0.6s;
+}
+
+/* Staggered countdown items animation */
+.countdown-item {
+  opacity: 0;
+  animation: countdownReveal 0.6s var(--ease-out-quart) forwards;
+}
+
+.countdown-item:nth-child(1) { animation-delay: 0.6s; }
+.countdown-item:nth-child(2) { animation-delay: 0.7s; }
+.countdown-item:nth-child(3) { animation-delay: 0.8s; }
+.countdown-item:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes heroFadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes countdownReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive - Tablets */
+@media (max-width: 768px) {
+  .countdown {
+    gap: 20px;
+  }
+
+  .countdown-label {
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .countdown {
+    gap: 12px;
+    padding: 0 10px;
+  }
+
+  .countdown-item {
+    min-width: 50px;
+  }
+
+  .countdown-value {
+    font-size: clamp(32px, 10vw, 42px);
+  }
+
+  .countdown-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+
+  .home-btn {
+    justify-content: center;
+    padding: 12px 20px; /* Touch-friendly */
+    font-size: 14px;
+  }
+
+  .scroll-indicator {
+    margin-top: 24px;
+    padding: 16px 24px; /* Mejor área táctil */
+  }
+
+  .scroll-text {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    letter-spacing: 2px;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .countdown {
+    gap: 24px;
+  }
+
+  .countdown-value {
+    font-size: 28px;
+  }
+
+  .countdown-label {
+    font-size: 9px;
+    margin-top: 4px;
+  }
+
+  .scroll-indicator {
+    margin-top: 16px;
+  }
+}

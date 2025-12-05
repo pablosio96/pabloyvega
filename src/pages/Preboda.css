@@ -1,0 +1,400 @@
+/* Animation timing functions */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.preboda-container {
+  padding: 40px 24px;
+  text-align: center;
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 100px;
+  background: var(--color-bg);
+}
+
+.preboda-container h1 {
+  font-size: clamp(28px, 6vw, 40px);
+  margin-bottom: 8px;
+  color: var(--color-text);
+  opacity: 0;
+  animation: slideUp 0.8s var(--ease-out-expo) 0.1s forwards;
+}
+
+.preboda-subtitle {
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--color-text-light);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: slideUp 0.8s var(--ease-out-expo) 0.2s forwards;
+}
+
+/* Info cards */
+.preboda-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: slideUp 0.8s var(--ease-out-expo) 0.3s forwards;
+}
+
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--color-bg-section);
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.info-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.info-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.info-content h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.info-content p {
+  font-size: 15px;
+  color: var(--color-text-light);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Maps section */
+.preboda-maps {
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: slideUp 0.8s var(--ease-out-expo) 0.4s forwards;
+}
+
+.preboda-maps h2 {
+  font-size: clamp(18px, 3vw, 22px);
+  color: var(--color-text);
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.maps-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.map-btn:hover {
+  border-color: var(--color-text);
+  background: var(--color-bg-section);
+}
+
+.map-btn.secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+}
+
+.map-btn.secondary:hover {
+  border-color: var(--color-text);
+  background: var(--color-bg-section);
+}
+
+/* Description */
+.preboda-description {
+  max-width: 500px;
+  margin: 0 auto 40px;
+  opacity: 0;
+  animation: slideUp 0.8s var(--ease-out-expo) 0.5s forwards;
+}
+
+.preboda-description p {
+  font-size: 16px;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* Form section */
+.preboda-form-section {
+  max-width: 400px;
+  margin: 0 auto;
+  padding-top: 40px;
+  border-top: 1px solid var(--color-border);
+  opacity: 0;
+  animation: slideUp 0.8s var(--ease-out-expo) 0.6s forwards;
+}
+
+.preboda-form-section h2 {
+  font-size: clamp(18px, 3vw, 22px);
+  color: var(--color-text);
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.preboda-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Form field */
+.form-field {
+  position: relative;
+  text-align: left;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 20px 0 8px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1.5px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  transition: border-color 0.4s var(--ease-out-expo);
+  font-family: inherit;
+  color: var(--color-text);
+  box-sizing: border-box;
+}
+
+.form-field input::placeholder {
+  color: transparent;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-bottom-color: var(--color-text);
+}
+
+.form-field label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--color-text-light);
+  pointer-events: none;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.form-field input:focus + label,
+.form-field input:not(:placeholder-shown) + label {
+  top: 0;
+  font-size: 11px;
+  color: var(--color-text-light);
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--color-text-light);
+  margin-top: 6px;
+  display: block;
+}
+
+/* Radio cards */
+.radio-card-group {
+  text-align: left;
+}
+
+.radio-card-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.radio-cards {
+  display: flex;
+  gap: 16px;
+}
+
+.radio-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border: 1.5px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.radio-card input {
+  display: none;
+}
+
+.radio-card:hover {
+  border-color: var(--color-text-light);
+}
+
+.radio-card.selected {
+  border-color: var(--color-text);
+  background: var(--color-bg-section);
+}
+
+.radio-card span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+.radio-card.selected span {
+  color: var(--color-text);
+}
+
+/* Submit button */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--color-accent);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success message */
+.success-message {
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.success-icon {
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.success-message h3 {
+  font-size: 22px;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.success-message p {
+  font-size: 16px;
+  color: var(--color-text-light);
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .preboda-container {
+    padding: 32px 20px;
+    padding-bottom: 80px;
+  }
+
+  .preboda-info {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    padding: 16px;
+  }
+
+  .info-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .maps-buttons {
+    flex-direction: column;
+  }
+
+  .map-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .radio-cards {
+    flex-direction: column;
+  }
+
+  .radio-card {
+    padding: 16px;
+  }
+}

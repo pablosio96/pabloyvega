@@ -1,0 +1,73 @@
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.splash-screen.splash-exit {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: splashFadeIn 0.8s ease forwards;
+}
+
+.splash-logo {
+  height: clamp(280px, 45vw, 450px);
+  width: auto;
+  animation: splashLogoIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.splash-line {
+  width: 0;
+  height: 1px;
+  background: #222;
+  animation: splashLineExpand 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+.splash-date {
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #888;
+  opacity: 0;
+  animation: splashFadeIn 0.6s ease 0.8s forwards;
+}
+
+@keyframes splashFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes splashLogoIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splashLineExpand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60px;
+  }
+}
