@@ -19,12 +19,6 @@ const { quiz, api, couple } = WEDDING_CONFIG;
 
 const QUIZ_PLAYED_KEY = 'quiz_played';
 
-interface QuizQuestion {
-  question: string;
-  options: string[];
-  correctIndex: number;
-}
-
 interface FormData {
   nombre: string;
   email: string;
@@ -49,7 +43,7 @@ function Quiz() {
   const [timeLeft, setTimeLeft] = useState(15);
   const [timerActive, setTimerActive] = useState(false);
 
-  const questions: QuizQuestion[] = quiz.questions;
+  const questions = quiz.questions;
   const totalQuestions = questions.length;
 
   // Timer countdown

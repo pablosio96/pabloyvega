@@ -66,14 +66,9 @@ function Home() {
 
   useEffect(() => {
     setIsLoaded(true);
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      clearInterval(timer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);

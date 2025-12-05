@@ -3,7 +3,7 @@ import { WEDDING_CONFIG } from '../config';
 import './Footer.css';
 
 function Footer() {
-  const { couple, date } = WEDDING_CONFIG;
+  const { date } = WEDDING_CONFIG;
 
   return (
     <footer className="global-footer">
