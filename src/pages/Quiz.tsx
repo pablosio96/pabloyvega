@@ -27,6 +27,13 @@ interface FormData {
 type GameState = 'intro' | 'playing' | 'result' | 'already_played';
 
 function Quiz() {
+    // Quitar el focus visual del botón al cambiar de pregunta
+    useEffect(() => {
+      const active = document.activeElement as HTMLElement | null;
+      if (active && active.classList.contains('option-btn')) {
+        active.blur();
+      }
+    }, [currentQuestion]);
   const [gameState, setGameState] = useState<GameState>(() => {
     // Verificar si ya jugó desde localStorage
     const played = localStorage.getItem(QUIZ_PLAYED_KEY);
