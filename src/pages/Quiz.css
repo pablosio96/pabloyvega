@@ -221,9 +221,16 @@
   transform: translateX(4px);
 }
 
+
 .option-btn.selected {
-  border-color: var(--color-text);
+  border-color: var(--color-border);
   background: var(--color-bg);
+}
+
+.option-btn:focus,
+.option-btn:focus-visible {
+  border-color: var(--color-border);
+  outline: none;
 }
 
 .option-btn.correct {
