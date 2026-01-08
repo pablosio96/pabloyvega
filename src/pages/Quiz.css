@@ -219,9 +219,11 @@
   color: var(--color-text);
 }
 
-.option-btn:hover:not(:disabled) {
-  border-color: var(--color-text-light);
-  transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+  .option-btn:hover:not(:disabled) {
+    border-color: var(--color-text-light);
+    transform: translateX(4px);
+  }
 }
 
 
