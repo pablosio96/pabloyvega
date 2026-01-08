@@ -254,7 +254,7 @@ function Quiz() {
           </div>
 
           {/* Options */}
-          <div className="quiz-options">
+          <div className="quiz-options" key={`question-${currentQuestion}`}>
             {questions[currentQuestion].options.map((option, index) => {
               const isSelected = selectedAnswer === index;
               const isCorrect = index === questions[currentQuestion].correctIndex;
@@ -263,11 +263,10 @@ function Quiz() {
 
               return (
                 <button
-                  key={index}
+                  key={`${currentQuestion}-${index}`}
                   className={`option-btn ${isSelected ? 'selected' : ''} ${showAsCorrect ? 'correct' : ''} ${showAsWrong ? 'wrong' : ''}`}
                   onClick={() => handleAnswer(index)}
                   disabled={showCorrect}
-                  tabIndex={-1}
                 >
                   <span className="option-letter">{String.fromCharCode(65 + index)}</span>
                   <span className="option-text">{option}</span>
