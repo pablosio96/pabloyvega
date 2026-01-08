@@ -286,17 +286,24 @@ function Asistencia() {
     return Object.keys(newErrors).length === 0;
   }, [step, formData]);
 
+  const scrollToTop = useCallback(() => {
+    // Timeout para esperar al render y compatibilidad con Safari iOS
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50);
+  }, []);
+
   const handleNext = useCallback(() => {
     if (validateStep()) {
       setStep(prev => prev + 2);
-      containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToTop();
     }
-  }, [validateStep]);
+  }, [validateStep, scrollToTop]);
 
   const handlePrev = useCallback(() => {
     setStep(prev => prev - 2);
-    containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, []);
+    scrollToTop();
+  }, [scrollToTop]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
