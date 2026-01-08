@@ -43,6 +43,10 @@ function Quiz() {
   const [timeLeft, setTimeLeft] = useState(15);
   const [timerActive, setTimerActive] = useState(false);
 
+  // Limpiar respuesta seleccionada al cambiar de pregunta
+  useEffect(() => {
+    setSelectedAnswer(null);
+  }, [currentQuestion]);
   const questions = quiz.questions;
   const totalQuestions = questions.length;
 
