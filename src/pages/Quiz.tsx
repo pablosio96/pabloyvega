@@ -267,6 +267,7 @@ function Quiz() {
                   className={`option-btn ${isSelected ? 'selected' : ''} ${showAsCorrect ? 'correct' : ''} ${showAsWrong ? 'wrong' : ''}`}
                   onClick={() => handleAnswer(index)}
                   disabled={showCorrect}
+                  tabIndex={-1}
                 >
                   <span className="option-letter">{String.fromCharCode(65 + index)}</span>
                   <span className="option-text">{option}</span>

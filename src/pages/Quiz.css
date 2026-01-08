@@ -1,3 +1,6 @@
+.option-btn:active {
+  border-color: var(--color-border) !important;
+}
 /* Animation timing functions */
 :root {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
