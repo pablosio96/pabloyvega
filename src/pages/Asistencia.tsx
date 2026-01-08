@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import {
   User,
   Check,
@@ -234,6 +234,7 @@ function Asistencia() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { showToast } = useToast();
+  const containerRef = useRef<HTMLElement>(null);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -288,13 +289,13 @@ function Asistencia() {
   const handleNext = useCallback(() => {
     if (validateStep()) {
       setStep(prev => prev + 2);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [validateStep]);
 
   const handlePrev = useCallback(() => {
     setStep(prev => prev - 2);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -323,7 +324,7 @@ function Asistencia() {
   };
 
   return (
-    <main className="asistencia-container page-enter" role="main" aria-label="Formulario de confirmación de asistencia">
+    <main ref={containerRef} className="asistencia-container page-enter" role="main" aria-label="Formulario de confirmación de asistencia">
       <div className="header-fixed">
         <h1 className="step-header">Confirmar asistencia</h1>
         {step !== 4 && <DeadlineNotice />}
