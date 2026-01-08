@@ -286,10 +286,16 @@ function Asistencia() {
   }, [step, formData]);
 
   const handleNext = useCallback(() => {
-    if (validateStep()) setStep(prev => prev + 2);
+    if (validateStep()) {
+      setStep(prev => prev + 2);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [validateStep]);
 
-  const handlePrev = useCallback(() => setStep(prev => prev - 2), []);
+  const handlePrev = useCallback(() => {
+    setStep(prev => prev - 2);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
