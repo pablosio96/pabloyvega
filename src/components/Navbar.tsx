@@ -83,6 +83,11 @@ function Navbar() {
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
   }, [sidebarOpen, closeSidebar]);
+
+  // Cerrar sidebar automáticamente al cambiar de ruta
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [pathname]);
   
   const navbarClasses = useMemo(() => {
     const classes = ['navbar'];
@@ -173,7 +178,6 @@ function Navbar() {
             <Link 
               key={to} 
               to={to} 
-              onClick={closeSidebar}
               className={`sidebar-link ${pathname === to ? 'sidebar-link-active' : ''}`}
             >
               <span className="sidebar-link-icon">{icon}</span>
@@ -187,7 +191,6 @@ function Navbar() {
           <Link
             to={ASISTENCIA_PATH}
             className="sidebar-cta"
-            onClick={closeSidebar}
           >
             {ASISTENCIA_LABEL_UPPER}
           </Link>
