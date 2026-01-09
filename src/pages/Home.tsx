@@ -1,5 +1,5 @@
-import { useMemo, useState, useEffect, useCallback, useRef } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useMemo, useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import bg from '../assets/fondo.jpg';
 import logoWhite from '../assets/logo-white.svg';
 import './Home.css';
@@ -7,7 +7,6 @@ import './Home.css';
 function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [parallaxOffset, setParallaxOffset] = useState(0);
-  const navigate = useNavigate();
 
   const backgroundStyle = useMemo(
     () => ({ 
