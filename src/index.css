@@ -32,7 +32,6 @@ html {
 html.scroll-locked,
 html.scroll-locked body {
   overflow: hidden !important;
-  height: 100%;
 }
 
 body {

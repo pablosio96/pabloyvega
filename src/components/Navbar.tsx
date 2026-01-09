@@ -67,13 +67,29 @@ function Navbar() {
   
   useBodyScrollLock(sidebarOpen);
   
+  // Scroll al top cuando cambia la ruta
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
   const closeSidebar = useCallback(() => setSidebarOpen(false), []);
   const toggleSidebar = useCallback(() => setSidebarOpen(prev => !prev), []);
   
   const handleLogoClick = useCallback(() => {
-    setSidebarOpen(false);
     navigate('/');
+    // Cerrar sidebar después de navegar para que la nueva página ya esté detrás
+    setTimeout(() => setSidebarOpen(false), 50);
   }, [navigate]);
+  
+  const handleNavClick = useCallback((to: string) => {
+    if (pathname !== to) {
+      navigate(to);
+      // Cerrar sidebar después de navegar para que la nueva página ya esté detrás
+      setTimeout(() => setSidebarOpen(false), 50);
+    } else {
+      setSidebarOpen(false);
+    }
+  }, [pathname, navigate]);
   
   // Cerrar sidebar con Escape
   useEffect(() => {
@@ -137,18 +153,20 @@ function Navbar() {
             <Link to="/" className="logo" style={{ visibility: isHomePage && !scrolled ? 'hidden' : 'visible' }}>
               <img src={logo} alt="Logo P&V" />
             </Link>
-            <button
-              className={`hamburger ${sidebarOpen ? 'is-active' : ''} ${isLightTheme ? 'hamburger-light' : ''}`}
-              onClick={toggleSidebar}
-              aria-label={sidebarOpen ? 'Cerrar menú' : 'Abrir menú'}
-              aria-expanded={sidebarOpen}
-            >
-              <span className="hamburger-line"></span>
-              <span className="hamburger-line"></span>
-            </button>
           </div>
         </div>
       </header>
+
+      {/* Hamburger button - fuera del header para estar siempre encima */}
+      <button
+        className={`hamburger ${sidebarOpen ? 'is-active' : ''} ${isLightTheme && !sidebarOpen ? 'hamburger-light' : ''}`}
+        onClick={toggleSidebar}
+        aria-label={sidebarOpen ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={sidebarOpen}
+      >
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+      </button>
 
       {/* Sidebar */}
       <aside 
@@ -163,15 +181,6 @@ function Navbar() {
           >
             <img src={logoBlack} alt="Logo P&V" className="sidebar-logo" />
           </button>
-          <button
-            className={`hamburger ${sidebarOpen ? 'is-active' : ''}`}
-            onClick={toggleSidebar}
-            aria-label={sidebarOpen ? 'Cerrar menú' : 'Abrir menú'}
-            aria-expanded={sidebarOpen}
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
         </div>
 
         <nav className="sidebar-nav">
@@ -181,10 +190,7 @@ function Navbar() {
               className={`sidebar-link ${pathname === to ? 'sidebar-link-active' : ''}`}
               onClick={e => {
                 e.currentTarget.blur();
-                setSidebarOpen(false);
-                if (pathname !== to) {
-                  navigate(to);
-                }
+                handleNavClick(to);
               }}
               tabIndex={0}
               type="button"
