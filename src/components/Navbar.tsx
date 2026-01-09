@@ -176,15 +176,23 @@ function Navbar() {
 
         <nav className="sidebar-nav">
           {NAV_LINKS.map(({ to, label, icon }) => (
-            <Link 
-              key={to} 
-              to={to} 
+            <button
+              key={to}
               className={`sidebar-link ${pathname === to ? 'sidebar-link-active' : ''}`}
+              onClick={e => {
+                e.currentTarget.blur();
+                setSidebarOpen(false);
+                if (pathname !== to) {
+                  navigate(to);
+                }
+              }}
+              tabIndex={0}
+              type="button"
             >
               <span className="sidebar-link-icon">{icon}</span>
               <span className="sidebar-link-text">{label}</span>
               <CaretRight size={18} className="sidebar-link-arrow" />
-            </Link>
+            </button>
           ))}
         </nav>
 

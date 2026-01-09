@@ -227,7 +227,8 @@
   opacity: 0;
   visibility: hidden;
   transition: 
-    opacity 0.3s ease,
+    opacity 0.15s ease,
+    visibility 0.15s ease;
     visibility 0.3s ease;
 }
 
@@ -307,8 +308,14 @@
   background-color: rgba(0,0,0,0.03);
 }
 /* hamburger-line and animation rules are defined above, nothing should be here */
-.sidebar-link:active {
-  transform: scale(0.98);
+
+/* Eliminar efecto de selección visual tras el clic */
+.sidebar-link:active,
+.sidebar-link:focus {
+  outline: none;
+  background: none;
+  box-shadow: none;
+  transform: none;
 }
 
 /* hamburger-line and animation rules are defined above, nothing should be here */
@@ -634,36 +641,5 @@
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: blur(0);
-  }
-}
-
-/* Closing animation - reverse stagger */
-.sidebar:not(.sidebar-open) .sidebar-link {
-  animation: slideOutRight 0.3s var(--ease-in-out-circ) forwards;
-}
-
-.sidebar:not(.sidebar-open) .sidebar-footer {
-  animation: fadeOutDown 0.25s ease forwards;
-}
-
-@keyframes slideOutRight {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-}
-
-@keyframes fadeOutDown {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(10px);
   }
 }
