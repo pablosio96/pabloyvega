@@ -35,7 +35,7 @@ export const WEDDING_CONFIG = {
   // Información de regalo
   gift: {
     message: 'Vuestra presencia es nuestro mejor regalo. Pero si deseáis hacernos un obsequio, podéis contribuir a nuestra luna de miel.',
-    iban: 'ES00 0000 0000 0000 0000 0000',
+    iban: 'ES55 2080 5043 9130 4007 9723',
     holder: 'Pablo y Vega',
   },
 
@@ -55,10 +55,10 @@ export const WEDDING_CONFIG = {
 
   // Contacto
   contact: {
-    email: 'hola@pabloyvega.com',
+    email: 'pabloyvega@gmail.com',
     contacts: [
-      { name: 'Pablo', phone: '+34 600 000 000' },
-      { name: 'Vega', phone: '+34 600 000 001' },
+      { name: 'Pablo', phone: '+34 677 171 977' },
+      { name: 'Vega', phone: '+34 690 027 180' },
     ],
   },
 
@@ -72,7 +72,7 @@ export const WEDDING_CONFIG = {
   // Programa del día
   timeline: [
     {
-      time: '17:00',
+      time: '17:30',
       title: 'Ceremonia',
       description: 'Nos damos el "Sí, quiero". Os esperamos puntuales para no perderos ni un momento.',
     },
@@ -92,31 +92,31 @@ export const WEDDING_CONFIG = {
       description: '¡A bailar! La pista de baile os espera para celebrar toda la noche.',
     },
     {
-      time: '00:00',
+      time: '04:00',
       title: 'Fin de fiesta',
-      description: 'Barra libre y diversión hasta que el cuerpo aguante.',
+      description: 'Tras haber disfrutado de una noche llena de baile y alegría, cada mochuelo a su olivo.',
     },
   ],
 
   // Hoteles recomendados
   hotels: [
     {
-      name: 'Hotel Ejemplo 1',
-      distance: 'A 5 min del venue',
-      phone: '+34 600 000 000',
-      website: 'https://ejemplo.com',
+      name: 'Hotel Atlántico',
+      distance: 'Vigo',
+      phone: '+34 986 220 530',
+      website: 'https://www.hotelatlanticovigo.com/es/',
     },
     {
-      name: 'Hotel Ejemplo 2',
-      distance: 'A 10 min del venue',
-      phone: '+34 600 000 001',
-      website: 'https://ejemplo2.com',
+      name: 'B&B Hotel',
+      distance: 'Vigo',
+      phone: '+34 986 220 220',
+      website: 'https://www.hotel-bb.com/es',
     },
     {
-      name: 'Hotel Ejemplo 3',
-      distance: 'A 15 min del venue',
-      phone: '+34 600 000 002',
-      website: undefined,
+      name: 'Hotel Rías Bajas',
+      distance: 'Pontevedra',
+      phone: '+34 986 855 100',
+      website: 'https://www.hotelriasbajas.com/es/',
     },
   ],
 
@@ -158,28 +158,28 @@ export const WEDDING_CONFIG = {
       end: '00:00',
     },
     venue: {
-      name: 'Nombre del lugar de la preboda',
-      address: 'Dirección del lugar',
-      mapsUrl: 'https://www.google.com/maps/place/TU_LUGAR_PREBODA',
+      name: 'Villa Pitusa',
+      address: 'Casa de la abu de Pablo',
+      mapsUrl: 'https://maps.app.goo.gl/Ja4uj7vc6Y6e1rc87?g_st=ic',
     },
     parking: {
-      mapsUrl: 'https://www.google.com/maps/place/TU_PARKING_PREBODA',
+      mapsUrl: 'https://maps.app.goo.gl/8kPirmUZUDi4ojPPA?g_st=ic',
     },
-    description: 'Una noche para empezar a celebrar antes del gran día. Cena informal y copas con los más cercanos.',
+    description: 'Una noche para empezar a celebrar antes del gran día. Picoteo y unas cervecitas con los más cercanos.',
   },
 
   // Quiz sobre los novios
   quiz: {
     questions: [
       {
-        question: '¿Dónde se conocieron Pablo y Vega?',
-        options: ['En una fiesta', 'En el trabajo', 'Por amigos en común', 'En la universidad'],
-        correctIndex: 2,
+        question: '¿Cómo se conocieron Pablo y Vega?',
+        options: ['En una fiesta', 'En el trabajo', 'Por amigos en común', 'Por una app de citas'],
+        correctIndex: 3,
       },
       {
-        question: '¿Cuál fue su primera cita?',
-        options: ['Cena en un restaurante', 'Paseo por la playa', 'Cine', 'Concierto'],
-        correctIndex: 0,
+        question: '¿Dónde fue su primera cita?',
+        options: ['Cena en un restaurante', 'Chiringuito en la playa', 'Cine', 'Concierto'],
+        correctIndex: 1,
       },
       {
         question: '¿Cuál es la película favorita de ambos?',
@@ -187,19 +187,19 @@ export const WEDDING_CONFIG = {
         correctIndex: 2,
       },
       {
-        question: '¿Cuál es el destino de viaje favorito de la pareja?',
-        options: ['París', 'Roma', 'Bali', 'Nueva York'],
-        correctIndex: 1,
+        question: '¿Cuál es el destino de la luna de miel de la pareja?',
+        options: ['Japón', 'Kenia', 'Bali', 'Nueva York'],
+        correctIndex: 0,
       },
       {
         question: '¿Qué comida les gusta compartir?',
         options: ['Pizza', 'Sushi', 'Tacos', 'Pasta'],
-        correctIndex: 1,
+        correctIndex: 0,
       },
       {
         question: '¿Cuántos años llevan juntos?',
         options: ['3 años', '5 años', '7 años', '8 años'],
-        correctIndex: 2,
+        correctIndex: 1,
       },
       {
         question: '¿Cuál es su canción?',
@@ -208,13 +208,13 @@ export const WEDDING_CONFIG = {
       },
       {
         question: '¿Dónde fue la pedida de mano?',
-        options: ['En casa', 'En un viaje', 'En un restaurante', 'Es sorpresa'],
-        correctIndex: 1,
+        options: ['En casa', 'En un viaje', 'En la playa', 'Es la montaña'],
+        correctIndex: 2,
       },
       {
         question: '¿Qué mascota tienen?',
-        options: ['Un perro', 'Un gato', 'Ninguna', 'Un conejo'],
-        correctIndex: 0,
+        options: ['Un perro', 'Un gato', 'Un conejo', 'Ninguna'],
+        correctIndex: 3,
       },
       {
         question: '¿Cuál es el hobby que comparten?',
@@ -227,22 +227,22 @@ export const WEDDING_CONFIG = {
   // Historia de la pareja
   milestones: [
     {
-      year: '2018',
+      year: '2021',
       title: 'Nos conocimos',
       description: 'Todo empezó en una noche de verano. Un encuentro casual que cambiaría nuestras vidas para siempre.',
     },
     {
-      year: '2019',
+      year: '2021',
       title: 'Primera cita',
       description: 'Después de meses hablando, por fin quedamos. Nervios, risas y la certeza de que algo especial estaba empezando.',
     },
     {
-      year: '2020',
+      year: '2021',
       title: 'Primer viaje juntos',
       description: 'Descubrimos que viajando juntos todo era mejor. Nuevos lugares, nuevas aventuras, nuevos recuerdos.',
     },
     {
-      year: '2022',
+      year: '2023',
       title: 'Nos fuimos a vivir juntos',
       description: 'Dimos el paso de compartir un hogar. Aprendimos a convivir, a cuidarnos y a construir nuestro pequeño mundo.',
     },

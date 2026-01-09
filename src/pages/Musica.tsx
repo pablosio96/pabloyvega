@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react';
-import { MusicNotes, PaperPlaneTilt, Check, CircleNotch, ArrowSquareOut } from '@phosphor-icons/react';
+import { MusicNotes, Check, CircleNotch } from '@phosphor-icons/react';
 import { WEDDING_CONFIG } from '../config';
 import './Musica.css';
 
-const { api, spotify } = WEDDING_CONFIG;
+const { api } = WEDDING_CONFIG;
 
 function Musica() {
   const [song, setSong] = useState('');
@@ -61,8 +61,8 @@ function Musica() {
   }, [song, artist, name]);
 
   return (
-    <main className="musica-container page-enter" role="main" aria-label="Playlist de la boda">
-      <h1>Playlist de la boda</h1>
+    <main className="musica-container page-enter" role="main" aria-label="Sugerencias de música">
+      <h1>Sugiere una canción</h1>
       <p className="musica-subtitle">¡Ayúdanos a crear la banda sonora perfecta!</p>
 
       <div className="musica-intro">
@@ -73,31 +73,8 @@ function Musica() {
         </p>
       </div>
 
-      {/* Spotify Embed */}
-      <section className="spotify-section">
-        <h2>Nuestra playlist</h2>
-        <div className="spotify-embed">
-          <iframe
-            title="Spotify Playlist"
-            src={spotify.embedUrl}
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          />
-        </div>
-        <a
-          href={spotify.playlistUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="spotify-link"
-        >
-          <ArrowSquareOut size={16} weight="light" />
-          Abrir en Spotify
-        </a>
-      </section>
-
       {/* Suggestion Form */}
       <section className="suggestion-section">
-        <h2>Sugiere una canción</h2>
         <form onSubmit={handleSubmit} className="suggestion-form">
           <div className="form-field">
             <input
@@ -150,17 +127,14 @@ function Musica() {
                 ¡Sugerencia enviada!
               </>
             ) : (
-              <>
-                <PaperPlaneTilt size={18} weight="light" />
-                Enviar sugerencia
-              </>
+              <>Enviar sugerencia</>
             )}
           </button>
         </form>
       </section>
 
       <div className="musica-note">
-        <p>💡 No prometemos poner todas las canciones, pero lo intentaremos 😉</p>
+        <p>No prometemos poner todas las canciones, pero lo intentaremos</p>
       </div>
     </main>
   );

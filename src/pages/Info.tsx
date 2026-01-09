@@ -92,7 +92,8 @@ function Info() {
   }, []);
 
   const copyIBAN = async () => {
-    await navigator.clipboard.writeText(gift.iban);
+    const ibanTrimmed = gift.iban.replace(/\s+/g, '').trim();
+    await navigator.clipboard.writeText(ibanTrimmed);
     setCopiedIBAN(true);
     setTimeout(() => setCopiedIBAN(false), 2000);
   };

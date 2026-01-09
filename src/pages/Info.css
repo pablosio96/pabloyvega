@@ -255,7 +255,7 @@
 .hotel-distance {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
   color: var(--color-text-muted);
   font-size: 14px;
@@ -265,7 +265,7 @@
 .hotel-phone {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
   color: var(--color-text-light);
   font-size: 14px;
@@ -276,6 +276,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  justify-content: flex-start;
   color: var(--color-accent);
   text-decoration: none;
   font-weight: 500;

@@ -1,46 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { Heart, Airplane, House, Diamond, Sparkle } from '@phosphor-icons/react';
+import { WEDDING_CONFIG } from '../config';
 import './Historia.css';
 
-interface Milestone {
-  year: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-}
-
-const MILESTONES: Milestone[] = [
-  {
-    year: '2018',
-    title: 'Nos conocimos',
-    description: 'Todo empezó en una noche de verano. Un encuentro casual que cambiaría nuestras vidas para siempre.',
-    icon: <Sparkle size={24} weight="light" />,
-  },
-  {
-    year: '2019',
-    title: 'Primera cita',
-    description: 'Después de meses hablando, por fin quedamos. Nervios, risas y la certeza de que algo especial estaba empezando.',
-    icon: <Heart size={24} weight="light" />,
-  },
-  {
-    year: '2020',
-    title: 'Primer viaje juntos',
-    description: 'Descubrimos que viajando juntos todo era mejor. Nuevos lugares, nuevas aventuras, nuevos recuerdos.',
-    icon: <Airplane size={24} weight="light" />,
-  },
-  {
-    year: '2022',
-    title: 'Nos fuimos a vivir juntos',
-    description: 'Dimos el paso de compartir un hogar. Aprendimos a convivir, a cuidarnos y a construir nuestro pequeño mundo.',
-    icon: <House size={24} weight="light" />,
-  },
-  {
-    year: '2025',
-    title: 'La pedida',
-    description: 'En un momento mágico, la pregunta más importante. Y la respuesta más esperada: ¡Sí, quiero!',
-    icon: <Diamond size={24} weight="light" />,
-  },
-];
+const ICONS: Record<string, React.ReactNode> = {
+  'Nos conocimos': <Sparkle size={24} weight="light" />,
+  'Primera cita': <Heart size={24} weight="light" />,
+  'Primer viaje juntos': <Airplane size={24} weight="light" />,
+  'Nos fuimos a vivir juntos': <House size={24} weight="light" />,
+  'La pedida': <Diamond size={24} weight="light" />,
+};
 
 function Historia() {
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
@@ -84,16 +53,16 @@ function Historia() {
 
       <div className="historia-timeline">
         <div className="historia-line" />
-        
-        {MILESTONES.map((milestone, index) => (
+
+        {WEDDING_CONFIG.milestones.map((milestone, index) => (
           <div
-            key={milestone.year}
+            key={milestone.year + milestone.title}
             ref={(el) => { itemRefs.current[index] = el; }}
             data-index={index}
             className={`historia-item ${visibleItems.has(index) ? 'visible' : ''}`}
           >
             <div className="historia-year">{milestone.year}</div>
-            <div className="historia-dot">{milestone.icon}</div>
+            <div className="historia-dot">{ICONS[milestone.title] ?? <Sparkle size={24} weight="light" />}</div>
             <div className="historia-content">
               <h3>{milestone.title}</h3>
               <p>{milestone.description}</p>

@@ -163,10 +163,10 @@ function Quiz() {
 
   const getResultMessage = () => {
     const percentage = (score / totalQuestions) * 100;
-    if (percentage === 100) return { icon: <Trophy size={64} weight="light" />, title: '¡Perfecto! 🎉', message: `¡Conoces a ${couple.fullNames} mejor que nadie!` };
-    if (percentage >= 70) return { icon: <Star size={64} weight="light" />, title: '¡Muy bien! ⭐', message: 'Eres un gran amigo de los novios.' };
-    if (percentage >= 50) return { icon: <Medal size={64} weight="light" />, title: '¡Nada mal! 👏', message: 'Conoces bastante bien a la pareja.' };
-    return { icon: <Heart size={64} weight="light" />, title: '¡Sigue intentándolo! 💪', message: 'Tendrás que conocerlos mejor en la boda.' };
+    if (percentage === 100) return { icon: <Trophy size={64} weight="light" />, title: '¡Perfecto!', message: `¡Conoces a  Pablo y Vega mejor que nadie!` };
+    if (percentage >= 70) return { icon: <Star size={64} weight="light" />, title: '¡Muy bien!', message: 'Eres un gran amigo de los novios.' };
+    if (percentage >= 50) return { icon: <Medal size={64} weight="light" />, title: '¡Nada mal!', message: 'Conoces bastante bien a la pareja.' };
+    return { icon: <Heart size={64} weight="light" />, title: '¡Sigue intentándolo!', message: 'Tendrás que conocerlos mejor en la boda.' };
   };
 
   const restartGame = () => {

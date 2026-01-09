@@ -16,7 +16,7 @@ const NAV_LINKS: NavLinkItem[] = [
   { to: '/historia', label: 'Nuestra Historia', icon: <Heart size={18} weight="light" /> },
   { to: '/info', label: 'Información', icon: <MapPin size={18} weight="light" /> },
   { to: '/preboda', label: 'Preboda', icon: <Champagne size={18} weight="light" /> },
-  { to: '/musica', label: 'Playlist', icon: <MusicNotes size={18} weight="light" /> },
+  { to: '/musica', label: 'Música', icon: <MusicNotes size={18} weight="light" /> },
   { to: '/quiz', label: 'Quiz', icon: <GameController size={18} weight="light" /> },
 ];
 

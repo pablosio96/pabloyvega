@@ -114,7 +114,7 @@
   color: white;
 }
 
-/* Scroll indicator */
+/* Scroll indicator - oculto en móvil */
 .scroll-indicator {
   display: flex;
   flex-direction: column;
@@ -127,6 +127,29 @@
   opacity: 0;
   animation: fadeInScroll 1s ease forwards;
   animation-delay: 1.5s;
+}
+
+/* Mobile CTA button - solo visible en móvil */
+.mobile-cta-btn {
+  display: none;
+  padding: 14px 32px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-size: 14px;
+  font-family: inherit;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-cta-btn:hover,
+.mobile-cta-btn:active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .scroll-indicator:hover .scroll-text,
@@ -301,8 +324,11 @@
   }
 
   .scroll-indicator {
-    margin-top: 24px;
-    padding: 16px 24px; /* Mejor área táctil */
+    display: none;
+  }
+
+  .mobile-cta-btn {
+    display: inline-block;
   }
 
   .scroll-text {
