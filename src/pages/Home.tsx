@@ -32,17 +32,25 @@ function Home() {
   return (
     <main className={`hero ${isLoaded ? 'hero-loaded' : ''}`} style={backgroundStyle}>
       <div className="hero-content">
-        <header className={`title-container ${isLoaded ? 'fade-in' : ''}`}>
+        <header className={`title-container ${isLoaded ? 'fade-in' : ''}`}> 
           <img src={logoWhite} alt="Pablo & Vega" className="hero-logo" />
-          <time className="hero-date" dateTime="2026-08-22">22 · 08 · 2026</time>
         </header>
       </div>
 
-      <footer className={`subtitle-group ${isLoaded ? 'fade-in-delay' : ''}`}>
+      {/* Fecha en móvil justo encima del botón */}
+      <footer className={`subtitle-group ${isLoaded ? 'fade-in-delay' : ''}`}> 
+        <div className="mobile-date">
+          <time className="hero-date" dateTime="2026-08-22">22 · 08 · 2026</time>
+        </div>
         <Link to="/asistencia" className="mobile-cta-btn">
           Confirmar asistencia
         </Link>
       </footer>
+
+      {/* Fecha en desktop pegada al fondo */}
+      <div className="desktop-date">
+        <time className="hero-date" dateTime="2026-08-22">22 · 08 · 2026</time>
+      </div>
     </main>
   );
 }
