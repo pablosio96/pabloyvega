@@ -22,6 +22,7 @@ const NAV_LINKS: NavLinkItem[] = [
 
 const ASISTENCIA_PATH = '/asistencia';
 const ASISTENCIA_LABEL = 'Confirmar asistencia';
+const ASISTENCIA_LABEL_UPPER = ASISTENCIA_LABEL.toUpperCase();
 
 function useScrollDetection(enabled: boolean) {
   const [scrolled, setScrolled] = useState(false);
@@ -188,7 +189,7 @@ function Navbar() {
             className="sidebar-cta"
             onClick={closeSidebar}
           >
-            {ASISTENCIA_LABEL}
+            {ASISTENCIA_LABEL_UPPER}
           </Link>
           
           <p className="sidebar-date">22 de Agosto de 2026</p>
