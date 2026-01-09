@@ -163,13 +163,14 @@ function Navbar() {
           >
             <img src={logoBlack} alt="Logo P&V" className="sidebar-logo" />
           </button>
-          <button 
-            className="sidebar-close" 
-            onClick={closeSidebar}
-            aria-label="Cerrar menú"
+          <button
+            className={`hamburger ${sidebarOpen ? 'is-active' : ''}`}
+            onClick={toggleSidebar}
+            aria-label={sidebarOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={sidebarOpen}
           >
-            <span className="close-line"></span>
-            <span className="close-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
           </button>
         </div>
 
