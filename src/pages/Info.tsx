@@ -10,7 +10,8 @@ import {
   ArrowSquareOut,
   Copy,
   Check,
-  Envelope
+  Envelope,
+  Bus
 } from '@phosphor-icons/react';
 import { WEDDING_CONFIG } from '../config';
 import './Info.css';
@@ -23,17 +24,24 @@ interface TimelineEvent {
 }
 
 const TIMELINE_ICONS: Record<string, React.ReactNode> = {
-  'Ceremonia': <Heart size={20} weight="light" />,
-  'Cóctel': <Wine size={20} weight="light" />,
-  'Cena': <ForkKnife size={20} weight="light" />,
-  'Fiesta': <Confetti size={20} weight="light" />,
-  'Fin de fiesta': <Sparkle size={20} weight="light" />,
+  'Llegada al pazo': <Bus size={20} weight="light" />, // Icono bus igual que en Confirmar Asistencia
+  'Ceremonia': <Heart size={20} weight="light" />, 
+  'Cóctel': <Wine size={20} weight="light" />, 
+  'Cena': <ForkKnife size={20} weight="light" />, 
+  'Fiesta': <Confetti size={20} weight="light" />, 
+  'Fin de fiesta': <Sparkle size={20} weight="light" />, 
 };
 
-const TIMELINE_EVENTS: TimelineEvent[] = WEDDING_CONFIG.timeline.map((event) => ({
-  ...event,
-  icon: TIMELINE_ICONS[event.title] || <Heart size={20} weight="light" />,
-}));
+const TIMELINE_EVENTS: TimelineEvent[] = WEDDING_CONFIG.timeline.map((event) => {
+  let icon = TIMELINE_ICONS[event.title] || <Heart size={20} weight="light" />;
+  if (event.icon === 'bus') {
+    icon = <Bus size={20} weight="light" />;
+  }
+  return {
+    ...event,
+    icon,
+  };
+});
 
 const { venue, gift, hotels, contact, date } = WEDDING_CONFIG;
 

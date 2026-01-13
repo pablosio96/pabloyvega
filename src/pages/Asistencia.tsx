@@ -455,18 +455,6 @@ function Asistencia() {
             )}
 
             <div className="form-navigation">
-              {step > 1 && (
-                <button type="button" className="btn-secondary" onClick={handlePrev}>
-                  <ArrowLeft size={16} weight="light" />
-                  Atrás
-                </button>
-              )}
-              {step === 1 && (
-                <button type="button" className="btn-primary" onClick={handleNext}>
-                  Siguiente
-                  <ArrowRight size={16} weight="light" />
-                </button>
-              )}
               {step === 3 && (
                 <button type="submit" className="btn-primary btn-submit" disabled={isSubmitting}>
                   {isSubmitting ? (
@@ -480,6 +468,18 @@ function Asistencia() {
                       Confirmar asistencia
                     </>
                   )}
+                </button>
+              )}
+              {step > 1 && (
+                <button type="button" className="btn-secondary" onClick={handlePrev}>
+                  <ArrowLeft size={16} weight="light" />
+                  Atrás
+                </button>
+              )}
+              {step === 1 && (
+                <button type="button" className="btn-primary" onClick={handleNext}>
+                  Siguiente
+                  <ArrowRight size={16} weight="light" />
                 </button>
               )}
             </div>

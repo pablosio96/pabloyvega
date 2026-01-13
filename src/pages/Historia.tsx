@@ -70,12 +70,6 @@ function Historia() {
           </div>
         ))}
       </div>
-
-      <div className="historia-footer">
-        <Heart size={32} className="historia-heart" />
-        <p>Y la historia continúa...</p>
-        <span className="historia-date">22 de Agosto de 2026</span>
-      </div>
     </main>
   );
 }

@@ -43,7 +43,7 @@ function Musica() {
         setSong('');
         setArtist('');
         setName('');
-        setTimeout(() => setIsSubmitted(false), 3000);
+        setTimeout(() => setIsSubmitted(false), 5000);
       } else {
         setError('Error al enviar. Inténtalo de nuevo.');
       }
@@ -54,7 +54,7 @@ function Musica() {
       setSong('');
       setArtist('');
       setName('');
-      setTimeout(() => setIsSubmitted(false), 3000);
+      setTimeout(() => setIsSubmitted(false), 5000);
     } finally {
       setIsSubmitting(false);
     }
@@ -73,64 +73,69 @@ function Musica() {
         </p>
       </div>
 
-      {/* Suggestion Form */}
+      {/* Suggestion Form or Confirmation */}
       <section className="suggestion-section">
-        <form onSubmit={handleSubmit} className="suggestion-form">
-          <div className="form-field">
-            <input
-              type="text"
-              value={song}
-              onChange={(e) => setSong(e.target.value)}
-              placeholder=" "
-              id="song"
-            />
-            <label htmlFor="song">Nombre de la canción *</label>
+        {isSubmitted ? (
+          <div className="musica-confirmation">
+            <div className="musica-confirmation-icon">
+              <Check size={48} weight="light" />
+            </div>
+            <h2>¡Sugerencia enviada!</h2>
+            <p>Gracias por tu propuesta. ¡Esperamos que suene en la fiesta!</p>
           </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="suggestion-form">
+            <div className="form-field">
+              <input
+                type="text"
+                value={song}
+                onChange={(e) => setSong(e.target.value)}
+                placeholder=" "
+                id="song"
+              />
+              <label htmlFor="song">Nombre de la canción *</label>
+            </div>
 
-          <div className="form-field">
-            <input
-              type="text"
-              value={artist}
-              onChange={(e) => setArtist(e.target.value)}
-              placeholder=" "
-              id="artist"
-            />
-            <label htmlFor="artist">Artista (opcional)</label>
-          </div>
+            <div className="form-field">
+              <input
+                type="text"
+                value={artist}
+                onChange={(e) => setArtist(e.target.value)}
+                placeholder=" "
+                id="artist"
+              />
+              <label htmlFor="artist">Artista (opcional)</label>
+            </div>
 
-          <div className="form-field">
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder=" "
-              id="name"
-            />
-            <label htmlFor="name">Tu nombre (opcional)</label>
-          </div>
+            <div className="form-field">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder=" "
+                id="name"
+              />
+              <label htmlFor="name">Tu nombre (opcional)</label>
+            </div>
 
-          {error && <p className="form-error">{error}</p>}
+            {error && <p className="form-error">{error}</p>}
 
-          <button
-            type="submit"
-            className={`submit-btn ${isSubmitted ? 'success' : ''}`}
-            disabled={isSubmitting || isSubmitted}
-          >
-            {isSubmitting ? (
-              <>
-                <CircleNotch size={18} className="spinner" />
-                Enviando...
-              </>
-            ) : isSubmitted ? (
-              <>
-                <Check size={18} weight="light" />
-                ¡Sugerencia enviada!
-              </>
-            ) : (
-              <>Enviar sugerencia</>
-            )}
-          </button>
-        </form>
+            <button
+              type="submit"
+              className={`submit-btn`}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <CircleNotch size={18} className="spinner" />
+                  Enviando...
+                </>
+              ) : (
+                <>Enviar sugerencia</>
+              )}
+            </button>
+          </form>
+        )}
       </section>
 
       <div className="musica-note">

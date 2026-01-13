@@ -41,10 +41,10 @@ export const WEDDING_CONFIG = {
 
   // APIs
   api: {
-    attendance: 'https://script.google.com/macros/s/AKfycby_mnjj7CF8JG_yFLA8qGNEQTQEGnuE0Lkwqzkgw9vWNkGe71M8dkh73hJVMs3hgEiI/exec',
-    musicSuggestions: 'https://script.google.com/macros/s/AKfycby_mnjj7CF8JG_yFLA8qGNEQTQEGnuE0Lkwqzkgw9vWNkGe71M8dkh73hJVMs3hgEiI/exec',
-    preboda: 'https://script.google.com/macros/s/AKfycby_mnjj7CF8JG_yFLA8qGNEQTQEGnuE0Lkwqzkgw9vWNkGe71M8dkh73hJVMs3hgEiI/exec',
-    quiz: 'https://script.google.com/macros/s/AKfycby_mnjj7CF8JG_yFLA8qGNEQTQEGnuE0Lkwqzkgw9vWNkGe71M8dkh73hJVMs3hgEiI/exec',
+    attendance: 'https://script.google.com/macros/s/AKfycbx9qSfno82HYbXN73ZdZGm17MRZ0FPAs7Jz50rALw7Xg9GdqWBBQZBGYrXXR738Y_9dFg/exec',
+    musicSuggestions: 'https://script.google.com/macros/s/AKfycbx9qSfno82HYbXN73ZdZGm17MRZ0FPAs7Jz50rALw7Xg9GdqWBBQZBGYrXXR738Y_9dFg/exec',
+    preboda: 'https://script.google.com/macros/s/AKfycbx9qSfno82HYbXN73ZdZGm17MRZ0FPAs7Jz50rALw7Xg9GdqWBBQZBGYrXXR738Y_9dFg/exec',
+    quiz: 'https://script.google.com/macros/s/AKfycbx9qSfno82HYbXN73ZdZGm17MRZ0FPAs7Jz50rALw7Xg9GdqWBBQZBGYrXXR738Y_9dFg/exec',
   },
 
   // Spotify
@@ -73,28 +73,39 @@ export const WEDDING_CONFIG = {
   timeline: [
     {
       time: '17:30',
+      title: 'Llegada al pazo',
+      description: '¡Bienvenidos! Aparcad el coche o llegad en bus y empezad a disfrutar del día.',
+      icon: 'car',
+    },
+    {
+      time: '18:00',
       title: 'Ceremonia',
       description: 'Nos damos el "Sí, quiero". Os esperamos puntuales para no perderos ni un momento.',
+      icon: 'rings',
     },
     {
       time: '19:00',
       title: 'Cóctel',
       description: 'Brindis y aperitivos mientras disfrutamos juntos de la puesta de sol.',
+      icon: 'glass',
     },
     {
       time: '21:00',
       title: 'Cena',
       description: 'Cena especial para celebrar este día tan importante con todos vosotros.',
+      icon: 'plate',
     },
     {
       time: '23:00',
       title: 'Fiesta',
       description: '¡A bailar! La pista de baile os espera para celebrar toda la noche.',
+      icon: 'music',
     },
     {
       time: '04:00',
       title: 'Fin de fiesta',
       description: 'Tras haber disfrutado de una noche llena de baile y alegría, cada mochuelo a su olivo.',
+      icon: 'moon',
     },
   ],
 

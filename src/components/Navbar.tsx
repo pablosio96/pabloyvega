@@ -201,13 +201,13 @@ function Navbar() {
         </nav>
 
         <div className="sidebar-footer">
-          <Link
-            to={ASISTENCIA_PATH}
+          <button
             className="sidebar-cta"
+            onClick={() => handleNavClick(ASISTENCIA_PATH)}
+            type="button"
           >
             {ASISTENCIA_LABEL_UPPER}
-          </Link>
-          
+          </button>
           <p className="sidebar-date">22 de Agosto de 2026</p>
         </div>
       </aside>
