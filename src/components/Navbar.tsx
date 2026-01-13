@@ -76,18 +76,14 @@ function Navbar() {
   const toggleSidebar = useCallback(() => setSidebarOpen(prev => !prev), []);
   
   const handleLogoClick = useCallback(() => {
+    setSidebarOpen(false);
     navigate('/');
-    // Cerrar sidebar después de navegar para que la nueva página ya esté detrás
-    setTimeout(() => setSidebarOpen(false), 50);
   }, [navigate]);
   
   const handleNavClick = useCallback((to: string) => {
+    setSidebarOpen(false);
     if (pathname !== to) {
       navigate(to);
-      // Cerrar sidebar después de navegar para que la nueva página ya esté detrás
-      setTimeout(() => setSidebarOpen(false), 50);
-    } else {
-      setSidebarOpen(false);
     }
   }, [pathname, navigate]);
   
@@ -100,10 +96,7 @@ function Navbar() {
     return () => window.removeEventListener('keydown', handleEscape);
   }, [sidebarOpen, closeSidebar]);
 
-  // Cerrar sidebar automáticamente al cambiar de ruta
-  useEffect(() => {
-    setSidebarOpen(false);
-  }, [pathname]);
+  // Eliminado: cierre automático redundante del sidebar al cambiar de ruta
   
   const navbarClasses = useMemo(() => {
     const classes = ['navbar'];
@@ -167,6 +160,11 @@ function Navbar() {
         <span className="hamburger-line"></span>
         <span className="hamburger-line"></span>
       </button>
+
+      {/* Overlay para cubrir el contenido cuando el sidebar está abierto */}
+      {sidebarOpen && (
+        <div className="sidebar-overlay" aria-hidden="true"></div>
+      )}
 
       {/* Sidebar */}
       <aside 
