@@ -24,24 +24,18 @@ interface TimelineEvent {
 }
 
 const TIMELINE_ICONS: Record<string, React.ReactNode> = {
-  'Llegada al pazo': <Bus size={20} weight="light" />, // Icono bus igual que en Confirmar Asistencia
+  'Llegada al pazo': <Bus size={20} weight="light" />, 
   'Ceremonia': <Heart size={20} weight="light" />, 
   'Cóctel': <Wine size={20} weight="light" />, 
   'Cena': <ForkKnife size={20} weight="light" />, 
   'Fiesta': <Confetti size={20} weight="light" />, 
-  'Fin de fiesta': <Sparkle size={20} weight="light" />, 
+  'Fin de fiesta': <Sparkle size={20} weight="light" />,
 };
 
-const TIMELINE_EVENTS: TimelineEvent[] = WEDDING_CONFIG.timeline.map((event) => {
-  let icon = TIMELINE_ICONS[event.title] || <Heart size={20} weight="light" />;
-  if (event.icon === 'bus') {
-    icon = <Bus size={20} weight="light" />;
-  }
-  return {
-    ...event,
-    icon,
-  };
-});
+const TIMELINE_EVENTS: TimelineEvent[] = WEDDING_CONFIG.timeline.map((event) => ({
+  ...event,
+  icon: TIMELINE_ICONS[event.title] || <Heart size={20} weight="light" />,
+}));
 
 const { venue, gift, hotels, contact, date } = WEDDING_CONFIG;
 

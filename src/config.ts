@@ -75,7 +75,7 @@ export const WEDDING_CONFIG = {
       time: '17:30',
       title: 'Llegada al pazo',
       description: '¡Bienvenidos! Aparcad el coche o llegad en bus y empezad a disfrutar del día.',
-      icon: 'car',
+      icon: 'bus',
     },
     {
       time: '18:00',
