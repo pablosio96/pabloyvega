@@ -456,21 +456,27 @@ function Asistencia() {
 
             <div className="form-navigation">
               {step === 3 && (
-                <button type="submit" className="btn-primary btn-submit" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>
-                      <CircleNotch size={16} className="spinner" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Check size={16} weight="light" />
-                      Confirmar asistencia
-                    </>
-                  )}
-                </button>
+                <>
+                  <button type="button" className="btn-secondary" onClick={handlePrev}>
+                    <ArrowLeft size={16} weight="light" />
+                    Atrás
+                  </button>
+                  <button type="submit" className="btn-primary btn-submit" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <CircleNotch size={16} className="spinner" />
+                        Enviando...
+                      </>
+                    ) : (
+                      <>
+                        <Check size={16} weight="light" />
+                        Confirmar asistencia
+                      </>
+                    )}
+                  </button>
+                </>
               )}
-              {step > 1 && (
+              {step > 1 && step !== 3 && (
                 <button type="button" className="btn-secondary" onClick={handlePrev}>
                   <ArrowLeft size={16} weight="light" />
                   Atrás
@@ -504,11 +510,25 @@ function Asistencia() {
               <button 
                 className="thank-you-btn"
                 onClick={() => {
-                  const startDate = '20260822T170000';
-                  const endDate = '20260823T040000';
-                  const title = encodeURIComponent('Boda Pablo & Vega');
-                  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}`;
-                  window.open(url, '_blank');
+                  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(typeof window !== 'undefined' && 'MSStream' in window);
+                  if (isIOS) {
+                    // Descargar archivo ICS para iOS
+                    const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Boda Pablo & Vega\nDTSTART:20260822T170000Z\nDTEND:20260823T040000Z\nLOCATION:Rectoral de Cobres, 1729, 36142 Vilaboa, Pontevedra (España)\nDESCRIPTION:¡Bienvenidos! Aparcad el coche o llegad en bus y empezad a disfrutar del día.\nEND:VEVENT\nEND:VCALENDAR`;
+                    const blob = new Blob([icsContent.replace(/\\n/g, '\r\n')], { type: 'text/calendar' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'boda-pablo-vega.ics';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  } else {
+                    // Google Calendar para otros dispositivos
+                    const startDate = '20260822T170000';
+                    const endDate = '20260823T040000';
+                    const title = encodeURIComponent('Boda Pablo & Vega');
+                    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}`;
+                    window.open(url, '_blank');
+                  }
                 }}
               >
                 <Calendar size={16} weight="light" />
