@@ -4,6 +4,7 @@ import { House, MapPin, CaretRight, Heart, MusicNotes, Champagne, GameController
 import logoWhite from '../assets/logo-white.svg';
 import logoBlack from '../assets/logo-black.svg';
 import './Navbar.css';
+import { SHOW_PREBODA } from '../config';
 
 interface NavLinkItem {
   to: string;
@@ -15,7 +16,7 @@ const NAV_LINKS: NavLinkItem[] = [
   { to: '/', label: 'Inicio', icon: <House size={18} weight="light" /> },
   { to: '/historia', label: 'Nuestra Historia', icon: <Heart size={18} weight="light" /> },
   { to: '/info', label: 'Información', icon: <MapPin size={18} weight="light" /> },
-  { to: '/preboda', label: 'Preboda', icon: <Champagne size={18} weight="light" /> },
+  ...(SHOW_PREBODA ? [{ to: '/preboda', label: 'Preboda', icon: <Champagne size={18} weight: 'light' /> }] : []),
   { to: '/musica', label: 'Música', icon: <MusicNotes size={18} weight="light" /> },
   { to: '/quiz', label: 'Quiz', icon: <GameController size={18} weight="light" /> },
 ];
