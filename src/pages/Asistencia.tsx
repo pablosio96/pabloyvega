@@ -510,10 +510,21 @@ function Asistencia() {
               <button 
                 className="thank-you-btn"
                 onClick={() => {
-                  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(typeof window !== 'undefined' && 'MSStream' in window);
+                  // Mejor detección de iOS/iPadOS/Safari
+                  let isIOS = false;
+                  // TypeScript-safe check for userAgentData
+                  const navTyped = navigator as Navigator & { userAgentData?: { platform?: string } };
+                  if (navTyped.userAgentData && navTyped.userAgentData.platform) {
+                    isIOS = /iPhone|iPad|iPod/.test(navTyped.userAgentData.platform);
+                  } else {
+                    isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS Safari
+                  }
                   if (isIOS) {
                     // Descargar archivo ICS para iOS
-                    const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Boda Pablo & Vega\nDTSTART:20260822T170000Z\nDTEND:20260823T040000Z\nLOCATION:Rectoral de Cobres, 1729, 36142 Vilaboa, Pontevedra (España)\nDESCRIPTION:¡Bienvenidos! Aparcad el coche o llegad en bus y empezad a disfrutar del día.\nEND:VEVENT\nEND:VCALENDAR`;
+                    // 22/08/2026 17:30 hora española = 15:30 UTC
+                    // 23/08/2026 04:00 hora española = 02:00 UTC
+                    const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Boda Pablo & Vega\nDTSTART:20260822T153000Z\nDTEND:20260823T020000Z\nLOCATION:Rectoral de Cobres, 1729, 36142 Vilaboa, Pontevedra (España)\nDESCRIPTION:¡Bienvenidos! Aparcad el coche o llegad en bus y empezad a disfrutar del día.\nEND:VEVENT\nEND:VCALENDAR`;
                     const blob = new Blob([icsContent.replace(/\\n/g, '\r\n')], { type: 'text/calendar' });
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
@@ -523,8 +534,10 @@ function Asistencia() {
                     document.body.removeChild(link);
                   } else {
                     // Google Calendar para otros dispositivos
-                    const startDate = '20260822T170000';
-                    const endDate = '20260823T040000';
+                    // 22/08/2026 17:30 hora española = 15:30 UTC
+                    // 23/08/2026 04:00 hora española = 02:00 UTC
+                    const startDate = '20260822T153000Z';
+                    const endDate = '20260823T020000Z';
                     const title = encodeURIComponent('Boda Pablo & Vega');
                     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}`;
                     window.open(url, '_blank');
