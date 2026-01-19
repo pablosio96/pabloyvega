@@ -524,7 +524,7 @@ function Asistencia() {
                     // Descargar archivo ICS para iOS
                     // 22/08/2026 17:30 hora española = 15:30 UTC
                     // 23/08/2026 04:00 hora española = 02:00 UTC
-                    const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Boda Pablo & Vega\nDTSTART:20260822T153000Z\nDTEND:20260823T020000Z\nLOCATION:Rectoral de Cobres, 1729, 36142 Vilaboa, Pontevedra (España)\nDESCRIPTION:¡Bienvenidos! Aparcad el coche o llegad en bus y empezad a disfrutar del día.\nEND:VEVENT\nEND:VCALENDAR`;
+                    const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Boda Pablo & Vega\nDTSTART:20260822T153000Z\nDTEND:20260823T020000Z\nLOCATION:Rectoral de Cobres, 1729, 36142 Vilaboa, Pontevedra (España)\nDESCRIPTION:¡Gracias por acompañarnos en este día tan especial!\nEND:VEVENT\nEND:VCALENDAR`;
                     const blob = new Blob([icsContent.replace(/\\n/g, '\r\n')], { type: 'text/calendar' });
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
