@@ -1,3 +1,5 @@
+// Flag para mostrar/ocultar la página de la preboda
+export const SHOW_PREBODA = false;
 // ============================================
 // CONFIGURACIÓN CENTRAL DE LA BODA
 // Edita estos valores con tu información real
@@ -55,7 +57,7 @@ export const WEDDING_CONFIG = {
 
   // Contacto
   contact: {
-    email: 'pabloyvega@gmail.com',
+    email: 'bodapabloyvega@gmail.com',
     contacts: [
       { name: 'Pablo', phone: '+34 677 171 977' },
       { name: 'Vega', phone: '+34 690 027 180' },

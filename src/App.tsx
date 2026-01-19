@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ToastProvider } from './components/Toast';
 import SplashScreen from './components/SplashScreen';
+import { SHOW_PREBODA } from './config';
 
 // Lazy loading para mejor rendimiento
 const Home = lazy(() => import('./pages/Home'));
@@ -21,7 +22,7 @@ const ROUTES = [
   { path: '/asistencia', element: <Asistencia /> },
   { path: '/historia', element: <Historia /> },
   { path: '/musica', element: <Musica /> },
-  { path: '/preboda', element: <Preboda /> },
+  ...(SHOW_PREBODA ? [{ path: '/preboda', element: <Preboda /> }] : []),
   { path: '/quiz', element: <Quiz /> },
 ] as const;
 

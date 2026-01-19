@@ -176,7 +176,7 @@ function Info() {
       >
         <h2 id="alojamiento-title" className="section-title">Alojamiento</h2>
         <p className="section-description">
-          Os recomendamos algunos hoteles cercanos al venue:
+          Os recomendamos algunos hoteles cercanos a la Rectoral:
         </p>
         <div className="hotels-grid">
           {hotels.map((hotel) => (
