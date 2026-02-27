@@ -32,7 +32,7 @@
   font-size: clamp(24px, 5vw, 32px);
   font-weight: 400;
   margin: 0 0 8px;
-  color: var(--color-text);
+  color: var(--color-accent-warm);
 }
 
 .step-subheader {
@@ -301,13 +301,20 @@
 
 .form-field.has-error input,
 .form-field.has-error textarea {
-  border-color: #e53935;
+  border-color: #8b1a2e;
 }
 
 .form-field .error {
-  color: #e53935;
+  color: #8b1a2e;
   font-size: 12px;
   margin-top: 4px;
+  display: block;
+}
+
+.radio-card-group .error {
+  color: #8b1a2e;
+  font-size: 12px;
+  margin-top: 8px;
   display: block;
 }
 

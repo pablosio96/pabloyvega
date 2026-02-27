@@ -4,7 +4,7 @@ import { House, MapPin, CaretRight, Heart, MusicNotes, Champagne, GameController
 import logoWhite from '../assets/logo-white.svg';
 import logoBlack from '../assets/logo-black.svg';
 import './Navbar.css';
-import { SHOW_PREBODA } from '../config';
+import { SHOW_PREBODA, WEDDING_CONFIG } from '../config';
 
 interface NavLinkItem {
   to: string;
@@ -209,7 +209,7 @@ function Navbar() {
           >
             {ASISTENCIA_LABEL_UPPER}
           </button>
-          <p className="sidebar-date">22 de Agosto de 2026</p>
+          <p className="footer-names sidebar-footer-names">{WEDDING_CONFIG.couple.footerNames}</p>
         </div>
       </aside>
     </>

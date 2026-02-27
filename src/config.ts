@@ -11,6 +11,7 @@ export const WEDDING_CONFIG = {
     name1: 'Pablo',
     name2: 'Vega',
     fullNames: 'Pablo & Vega',
+    footerNames: 'Pablo + Vega',
   },
 
   // Fecha y hora

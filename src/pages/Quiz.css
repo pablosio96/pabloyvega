@@ -37,7 +37,7 @@
 
 .quiz-intro h1 {
   font-size: clamp(24px, 6vw, 36px);
-  color: var(--color-text);
+  color: var(--color-accent-warm);
   margin-bottom: 16px;
   font-weight: 400;
 }

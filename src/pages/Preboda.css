@@ -19,7 +19,7 @@
 .preboda-container h1 {
   font-size: clamp(28px, 6vw, 40px);
   margin-bottom: 8px;
-  color: var(--color-text);
+  color: var(--color-accent-warm);
   opacity: 0;
   animation: slideUp 0.8s var(--ease-out-expo) 0.1s forwards;
 }
@@ -92,7 +92,7 @@
 
 .preboda-maps h2 {
   font-size: clamp(18px, 3vw, 22px);
-  color: var(--color-text);
+  color: var(--color-accent-warm);
   margin-bottom: 20px;
   font-weight: 400;
 }
@@ -161,7 +161,7 @@
 
 .preboda-form-section h2 {
   font-size: clamp(18px, 3vw, 22px);
-  color: var(--color-text);
+  color: var(--color-accent-warm);
   margin-bottom: 24px;
   font-weight: 400;
 }
