@@ -75,7 +75,7 @@ export const WEDDING_CONFIG = {
   timeline: [
     {
       time: '17:30',
-      title: 'Llegada al pazo',
+      title: 'Llegada a la Rectoral',
       description: '¡Bienvenidos! Aparcad el coche o llegad en bus y empezad a disfrutar del día.',
       icon: 'bus',
     },

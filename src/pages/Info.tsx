@@ -24,7 +24,7 @@ interface TimelineEvent {
 }
 
 const TIMELINE_ICONS: Record<string, React.ReactNode> = {
-  'Llegada al pazo': <Bus size={20} weight="light" />, 
+  'Llegada a la Rectoral': <Bus size={20} weight="light" />, 
   'Ceremonia': <Heart size={20} weight="light" />, 
   'Cóctel': <Wine size={20} weight="light" />, 
   'Cena': <ForkKnife size={20} weight="light" />, 

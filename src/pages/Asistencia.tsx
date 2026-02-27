@@ -46,7 +46,7 @@ const INITIAL_FORM_DATA: FormData = {
 
 const WEDDING_DATE = new Date('2026-08-22T17:00:00');
 // Fecha límite para confirmar asistencia - CONFIGURABLE
-const RSVP_DEADLINE = new Date('2026-06-20T23:59:59');
+const RSVP_DEADLINE = new Date('2026-08-01T23:59:59');
 const PARADAS = ['Porriño', 'Vigo', 'Pontevedra'] as const;
 const PHONE_REGEX = /^\d{9}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
