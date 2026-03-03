@@ -233,7 +233,6 @@ function Home() {
                 <span role="img" aria-label="Rectoral" className="tw-flip-card__img" />
                 <div className="tw-flip-card__text">
                   <h3>{venue.name.toUpperCase()}</h3>
-                  <p className="tw-flip-card__time">{timeline[0].time}H</p>
                 </div>
               </div>
               <div className="tw-flip-card__back">

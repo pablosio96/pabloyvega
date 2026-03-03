@@ -316,6 +316,16 @@ textarea {
   margin: 0 0 0.5rem;
   text-align: center;
   letter-spacing: 0.02em;
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+  /* Sombra para mejorar legibilidad */
+  text-shadow: 0 2px 8px #fff, 0 1px 2px #fff;
+}
+
+.tw-locations__cards {
+  position: relative;
+  z-index: 1;
 }
 
 .tw-locations__cards {
@@ -375,7 +385,9 @@ textarea {
 }
 
 .tw-flip-card__front {
-  background: var(--tw-bg);
+  background: transparent;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .tw-flip-card__frame {
@@ -459,7 +471,7 @@ textarea {
 }
 
 .tw-flip-card__back {
-  background: var(--tw-bg);
+  background: rgba(255,255,255,0.85); /* Semitransparente para dejar ver el hint */
   transform: rotateY(180deg);
 }
 
@@ -1337,10 +1349,17 @@ textarea {
   }
 
   .tw-faqs__decos-mobile img {
-    width: 120px;
-    height: auto;
-    opacity: 0.9;
-    object-fit: contain;
+      width: 120px;
+      height: auto;
+      opacity: 0.9;
+      object-fit: contain;
+    }
+
+    .tw-faqs__decos-mobile img:first-child {
+      transform: rotate(10deg);
+    }
+    .tw-faqs__decos-mobile img:last-child {
+      transform: rotate(-10deg);
   }
 }
 
