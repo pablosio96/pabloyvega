@@ -1,3 +1,9 @@
+/* Evitar zoom en inputs en móviles (iOS/Safari) */
+input,
+select,
+textarea {
+  font-size: 16px !important;
+}
 /* ════════════════════════════════════════════
    Wedding Invitation – Test Page
    Color: #6f2439 (burgundy) / #fff (white)
