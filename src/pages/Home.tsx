@@ -143,9 +143,8 @@ function Home() {
     setRsvpError('');
     try {
       const response = await fetch(WEDDING_CONFIG.api.attendance, {
-        redirect: 'follow',
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(rsvp),
       });
       if (response.ok) {
@@ -171,10 +170,9 @@ function Home() {
     setMusicError('');
     try {
       await fetch(WEDDING_CONFIG.api.musicSuggestions, {
-        redirect: 'follow',
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ tipo: 'sugerencia_musica', cancion: musicSong, artista: musicArtist, nombre: musicName, fecha: new Date().toISOString() }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cancion: musicSong, artista: musicArtist, nombre: musicName }),
       });
     } catch { /* silently accept */ }
     setMusicSent(true);
