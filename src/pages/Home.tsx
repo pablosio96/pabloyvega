@@ -498,7 +498,7 @@ function Home() {
             <form className="tw-music__form" onSubmit={handleMusicSubmit}>
               <div className="tw-rsvp__row">
                 <div className="tw-rsvp__field">
-                  <label>CANCIÓN *</label>
+                  <label>CANCIÓN</label>
                   <input
                     type="text"
                     value={musicSong}
