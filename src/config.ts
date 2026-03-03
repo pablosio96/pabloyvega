@@ -31,7 +31,7 @@ export const WEDDING_CONFIG = {
     city: 'Vigo',
     lat: 42.307742,
     lng: -8.661104,
-    mapsUrl: 'https://www.google.com/maps/place/Rectoral+de+Cobres+1729/@42.3077417,-8.6611043,17z',
+    mapsUrl: 'https://www.google.com/maps/place/Rectoral+de+Cobres+1729/@42.3077417,-8.6636792,753m/data=!3m2!1e3!4b1!4m11!3m10!1s0xd2f64ab2f35f6d1:0x1276b1adb72a24ad!5m4!1s2026-03-19!2i2!4m1!1i2!8m2!3d42.3077417!4d-8.6611043!16s%2Fg%2F1tnl2pkk?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D',
     embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2942.8!2d-8.6636792!3d42.3077417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2f64ab2f35f6d1%3A0x1276b1adb72a24ad!2sRectoral%20de%20Cobres%201729!5e0!3m2!1ses!2ses!4v1701700000000',
   },
 
@@ -44,10 +44,10 @@ export const WEDDING_CONFIG = {
 
   // APIs
   api: {
-    attendance: 'https://script.google.com/macros/s/AKfycbx9qSfno82HYbXN73ZdZGm17MRZ0FPAs7Jz50rALw7Xg9GdqWBBQZBGYrXXR738Y_9dFg/exec',
-    musicSuggestions: 'https://script.google.com/macros/s/AKfycbx9qSfno82HYbXN73ZdZGm17MRZ0FPAs7Jz50rALw7Xg9GdqWBBQZBGYrXXR738Y_9dFg/exec',
-    preboda: 'https://script.google.com/macros/s/AKfycbx9qSfno82HYbXN73ZdZGm17MRZ0FPAs7Jz50rALw7Xg9GdqWBBQZBGYrXXR738Y_9dFg/exec',
-    quiz: 'https://script.google.com/macros/s/AKfycbx9qSfno82HYbXN73ZdZGm17MRZ0FPAs7Jz50rALw7Xg9GdqWBBQZBGYrXXR738Y_9dFg/exec',
+    attendance: 'https://script.google.com/macros/s/AKfycby0zE9_x__FlkPMZAiqHljaPBQdDTBt88CX4mX7I2yiSJCB4fq52A65MoG8Dqrv72JI/exec',
+    musicSuggestions: 'https://script.google.com/macros/s/AKfycby0zE9_x__FlkPMZAiqHljaPBQdDTBt88CX4mX7I2yiSJCB4fq52A65MoG8Dqrv72JI/exec',
+    preboda: 'https://script.google.com/macros/s/AKfycby0zE9_x__FlkPMZAiqHljaPBQdDTBt88CX4mX7I2yiSJCB4fq52A65MoG8Dqrv72JI/exec',
+    quiz: 'https://script.google.com/macros/s/AKfycby0zE9_x__FlkPMZAiqHljaPBQdDTBt88CX4mX7I2yiSJCB4fq52A65MoG8Dqrv72JI/exec',
   },
 
   // Spotify
@@ -137,7 +137,7 @@ export const WEDDING_CONFIG = {
       answer: 'Sí, indicadlo en el formulario de asistencia y lo tendremos en cuenta.',
     },
     {
-      question: '¿Nos queréis hacer un regalo?',
+      question: '¿Y si os queremos hacer un regalo?',
       answer: 'Os dejamos nuestra cuenta bancaria:<br><br><span class="tw-faq-icon"></span> IBAN: <span class="tw-faq-copy" data-copy="ES55 2080 5043 9130 4007 9723">ES55 2080 5043 9130 4007 9723</span>',
     },
     {

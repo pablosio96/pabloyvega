@@ -958,19 +958,36 @@
 }
 
 .tw-music__info {
-  color: var(--tw-text);
   font-family: 'UniNeue', serif;
-  font-size: 1rem;
-  font-style: italic;
-  opacity: 0.8;
+  font-size: 1.15rem;
+  font-weight: 400 !important;
+  color: var(--tw-accent);
+  margin: 0 0 1.5rem;
   text-align: center;
-  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
 }
 
 .tw-music__form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.tw-music__form .tw-rsvp__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tw-music__form .tw-rsvp__field label {
+  font-family: 'Recoleta', serif;
+  font-size: 0.8rem;
+  font-weight: 900 !important;
+  color: var(--tw-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-left: 1rem;
+  text-align: left;
 }
 
 .tw-music__thanks {

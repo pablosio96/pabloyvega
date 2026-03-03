@@ -75,6 +75,7 @@ const PHONE_REGEX = /^\d{9}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /* ── Component ── */
+
 function Home() {
   const [flipped, setFlipped] = useState<Record<number, boolean>>({});
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -90,6 +91,10 @@ function Home() {
   const [musicSending, setMusicSending] = useState(false);
   const [musicError, setMusicError] = useState('');
   const countdown = useCountdown(new Date(date.full));
+
+  // refs para scroll tras éxito
+  const rsvpSuccessRef = useRef<HTMLDivElement>(null);
+  const musicSuccessRef = useRef<HTMLDivElement>(null);
 
   const heroObs = useInView(0.1);
   const musicObs = useInView();
@@ -111,6 +116,7 @@ function Home() {
     });
     setRsvpErrors(prev => ({ ...prev, [name]: undefined }));
   };
+
 
   const handleRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,6 +150,9 @@ function Home() {
       });
       if (response.ok) {
         setRsvpSent(true);
+        setTimeout(() => {
+          rsvpSuccessRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
       } else {
         setRsvpError('Error al guardar los datos. Por favor, inténtalo de nuevo.');
       }
@@ -153,6 +162,7 @@ function Home() {
       setRsvpSending(false);
     }
   };
+
 
   const handleMusicSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
@@ -173,6 +183,9 @@ function Home() {
     setMusicName('');
     setMusicSending(false);
     setTimeout(() => setMusicSent(false), 5000);
+    setTimeout(() => {
+      musicSuccessRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
   }, [musicSong, musicArtist, musicName]);
 
   /* ── Schedule items from config timeline ── */
@@ -294,7 +307,7 @@ function Home() {
         <img src={`${IMG}/Lazos.png`} alt="" className="tw-rsvp__decoration" />
 
         {rsvpSent ? (
-          <div className="tw-rsvp__thanks">
+          <div className="tw-rsvp__thanks" ref={rsvpSuccessRef}>
             <p>¡Gracias por confirmar, {rsvp.nombre}!</p>
             <p>Nos vemos el {date.display}.</p>
             <button
@@ -314,7 +327,7 @@ function Home() {
                     'VERSION:2.0',
                     'BEGIN:VEVENT',
                     'SUMMARY:Boda Pablo & Vega',
-                    'DTSTART:20260822T153000Z',
+                    'DTSTART:20260822T163000Z',
                     'DTEND:20260823T020000Z',
                     'LOCATION:Rectoral de Cobres, 1729, 36142 Vilaboa, Pontevedra (España)',
                     'DESCRIPTION:¡Gracias por acompañarnos en este día tan especial!',
@@ -330,12 +343,12 @@ function Home() {
                   document.body.removeChild(link);
                 } else {
                   const title = encodeURIComponent('Boda Pablo & Vega');
-                  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20260822T153000Z/20260823T020000Z`;
+                  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20260822T163000Z/20260823T020000Z`;
                   window.open(url, '_blank');
                 }
               }}
             >
-              📅 Añadir al calendario
+              Añadir al calendario
             </button>
           </div>
         ) : (
@@ -478,11 +491,11 @@ function Home() {
           <h3 className={`tw-music__title ${musicObs.visible ? 'visible' : ''}`}>Nuestra Lista de Canciones</h3>
           <img src={`${IMG}/Lazos.png`} alt="" className="tw-music__deco" />
           <p className="tw-music__info">
-            ¡AÑADE LAS CANCIONES QUE NO PUEDEN FALTAR ESTE DÍA!
+            ¡Añade las canciones que no pueden faltar ese día!
           </p>
 
           {musicSent ? (
-            <div className="tw-music__thanks">
+            <div className="tw-music__thanks" ref={musicSuccessRef}>
               <span className="tw-music__check">✓</span>
               <p>¡Sugerencia enviada! ¡Esperamos que suene en la fiesta!</p>
             </div>
