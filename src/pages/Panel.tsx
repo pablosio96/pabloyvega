@@ -1,8 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import PanelLogin from './PanelLogin';
-import { ACCENT } from './PanelLogin';
-import { useCallback } from 'react';
 
 
 
@@ -108,7 +106,7 @@ function Panel() {
                     </tr>
                   </thead>
                   <tbody>
-                    {sortBy(asistentes, asistSort.key, asistSort.asc).map((a, idx, arr) => (
+                    {sortBy(asistentes, asistSort.key, asistSort.asc).map((a, idx) => (
                       <tr key={a.id}>
                         <td style={{ fontWeight: 600 }}>{idx + 1}</td>
                         <td>{a.nombre || '-'}</td>
@@ -143,7 +141,7 @@ function Panel() {
                     </tr>
                   </thead>
                   <tbody>
-                    {sortBy(canciones, cancionSort.key, cancionSort.asc).map((c, idx, arr) => (
+                    {sortBy(canciones, cancionSort.key, cancionSort.asc).map((c, idx) => (
                       <tr key={c.id}>
                         <td style={{ fontWeight: 600 }}>{idx + 1}</td>
                         <td>{c.nombre || '-'}</td>
