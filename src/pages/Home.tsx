@@ -229,15 +229,15 @@ function Home() {
           <div className="tw-flip-card visible" onClick={() => setFlipped(p => ({ ...p, [0]: !p[0] }))}>
             <div className={`tw-flip-card__inner ${flipped[0] ? 'flipped' : ''}`}>
               <div className="tw-flip-card__front">
-                <img src={`${IMG}/01_Marco.png`} alt="Marco" className="tw-flip-card__frame" />
-                <img src={`${IMG}/rectoral_de_cobres_logo_dark.svg`} alt="Rectoral" className="tw-flip-card__img" />
+                <span role="img" aria-label="Marco" className="tw-flip-card__frame" />
+                <span role="img" aria-label="Rectoral" className="tw-flip-card__img" />
                 <div className="tw-flip-card__text">
                   <h3>{venue.name.toUpperCase()}</h3>
                   <p className="tw-flip-card__time">{timeline[0].time}H</p>
                 </div>
               </div>
               <div className="tw-flip-card__back">
-                <img src={`${IMG}/01_Marco.png`} alt="Marco" className="tw-flip-card__frame" />
+                <span role="img" aria-label="Marco" className="tw-flip-card__frame" />
                 <div className="tw-flip-card__back-content">
                   <div className="tw-flip-card__info">
                     <span className="tw-flip-card__label">Lugar</span>
@@ -299,7 +299,7 @@ function Home() {
       <section className="tw-rsvp" ref={rsvpObs.ref}>
         <div className="tw-rsvp__inner">
         <h2 className={`tw-rsvp__title ${rsvpObs.visible ? 'visible' : ''}`}>RSVP</h2>
-        <img src={`${IMG}/Lazos.png`} alt="" className="tw-rsvp__decoration" />
+        <span role="img" aria-label="" className="tw-rsvp__decoration" />
 
         {rsvpSent ? (
           <div className="tw-rsvp__thanks" ref={rsvpSuccessRef}>
@@ -435,7 +435,7 @@ function Home() {
 
       {/* ═══ DRESSCODE ═══ */}
       <section className="tw-dresscode">    
-        <img src={`${IMG}/Baile.png`} alt="Dresscode" className="tw-dresscode__image" />
+        <img src={`${IMG}/baile_azul.png`} alt="Dresscode" className="tw-dresscode__image" />
       </section>
 
       {/* ═══ FAQS ═══ */}
@@ -484,7 +484,7 @@ function Home() {
       <section className="tw-music" ref={musicObs.ref}>
         <div className="tw-music__inner">
           <h3 className={`tw-music__title ${musicObs.visible ? 'visible' : ''}`}>Nuestra Lista de Canciones</h3>
-          <img src={`${IMG}/Lazos.png`} alt="" className="tw-music__deco" />
+          <span role="img" aria-label="" className="tw-music__deco" />
           <p className="tw-music__info">
             ¡Añade las canciones que no pueden faltar ese día!
           </p>

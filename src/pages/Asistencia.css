@@ -314,18 +314,18 @@
 
 .form-field.has-error input,
 .form-field.has-error textarea {
-  border-color: #8b1a2e;
+  border-color: var(--color-red-main);
 }
 
 .form-field .error {
-  color: #8b1a2e;
+  color: var(--color-red-main);
   font-size: 12px;
   margin-top: 4px;
   display: block;
 }
 
 .radio-card-group .error {
-  color: #8b1a2e;
+  color: var(--color-red-main);
   font-size: 12px;
   margin-top: 8px;
   display: block;

@@ -38,12 +38,12 @@ textarea {
 
 /* ── Variables ── */
 .test-wedding {
-  --tw-accent: #6f2439;
-  --tw-accent-light: #9f3347;
+  --tw-accent: var(--color-primary);
+  --tw-accent-light: var(--color-primary);
   --tw-bg: #fff;
-  --tw-bg-alt: #fff;
-  --tw-text: #2b2b2b;
-  --tw-text-light: #555;
+  --tw-bg-alt: #e6f7ff;
+  --tw-text: #22304a;
+  --tw-text-light: #5a6fa7;
   --tw-white: #fff;
   --tw-radius: 15px;
   font-family: 'Cormorant Garamond', Georgia, serif;
@@ -383,18 +383,35 @@ textarea {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
   pointer-events: none;
+  display: block;
+  -webkit-mask-image: url('/images/wedding/marco.svg');
+  mask-image: url('/images/wedding/marco.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: var(--color-primary);
 }
 
 .tw-flip-card__img {
   width: 100%;
+  height: 180px;
   max-height: 45%;
-  object-fit: contain;
   margin-bottom: 1rem;
   position: relative;
-  /* #ad2d45 filter: */
-  filter: brightness(0) saturate(100%) invert(17%) sepia(61%) saturate(1812%) hue-rotate(-12deg) brightness(92%) contrast(97%);
+  display: block;
+  -webkit-mask-image: url('/images/wedding/rectoral.svg');
+  mask-image: url('/images/wedding/rectoral.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: var(--color-primary);
 }
 
 .tw-flip-card__text {
@@ -466,7 +483,7 @@ textarea {
   font-family: 'UniNeue', serif;
   font-size: 1.2rem;
   font-weight: 600 !important;
-  color: #5b493f;
+  color: var(--tw-accent);
   line-height: 1.1;
   margin: 0;
 }
@@ -604,9 +621,17 @@ textarea {
   display: block;
   max-width: 600px;
   width: 100%;
-  height: auto;
+  height: 80px;
   margin: 0 auto 2rem;
-  object-fit: contain;
+  -webkit-mask-image: url('/images/wedding/lazos.svg');
+  mask-image: url('/images/wedding/lazos.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: var(--color-primary);
 }
 
 .tw-rsvp__thanks {
@@ -744,7 +769,7 @@ textarea {
 
 .tw-rsvp__field select {
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8'%3E%3Cpath fill='none' stroke='%236f2439' stroke-linecap='round' stroke-width='2' d='m1 1 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8'%3E%3Cpath fill='none' stroke='%23b8dffe' stroke-linecap='round' stroke-width='2' d='m1 1 6 6 6-6'/%3E%3C/svg%3E");
   background-position: right 1.2rem center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -763,8 +788,9 @@ textarea {
 /* ═══════════════════
    DRESSCODE
    ═══════════════════ */
+
 .tw-dresscode {
-  background: var(--tw-bg-alt);
+  background: var(--tw-bg);
   padding: 4rem 2rem;
   text-align: center;
 }
@@ -909,21 +935,33 @@ textarea {
   animation: tw-slideDown 0.3s ease;
 }
 
+
+
+.tw-faqs__answer {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Recoleta', serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin: 1.2rem 0 0;
+  animation: tw-slideDown 0.3s ease;
+}
+
+/* Si necesitas la clase .tw-faq-icon, descomenta y usa así:
+// .tw-faq-icon {
+//   color: var(--tw-bg);
+//   font-size: 1.2em;
+//   opacity: 0.9;
+// }
+*/
+
 .tw-faqs__answer a {
   color: #fff;
   text-decoration: none;
-  font-weight: 600;
-  word-break: break-all;
-}
-
-.tw-faq-icon {
-  color: var(--tw-bg);
-  font-size: 1.2em;
-  opacity: 0.9;
 }
 
 .tw-faqs__answer a:hover {
   opacity: 0.8;
+  text-decoration: underline;
 }
 
 .tw-faqs__answer b {
@@ -991,9 +1029,17 @@ textarea {
   display: block;
   width: 80%;
   max-width: 600px;
-  height: auto;
-  object-fit: contain;
+  height: 80px;
   margin: 0 auto 1.5rem;
+  -webkit-mask-image: url('/images/wedding/lazos.svg');
+  mask-image: url('/images/wedding/lazos.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: var(--color-primary);
 }
 
 .tw-music__info {
