@@ -1,17 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { 
-  Heart, 
-  Wine, 
-  ForkKnife, 
-  Confetti,
-  Sparkle,
-  MapPin,
-  Phone,
-  ArrowSquareOut,
-  Copy,
-  Check,
-  Envelope,
-  Bus
+ArrowSquareOut, Check, Copy, Confetti, Envelope, ForkKnife, Heart, MapPin, Phone, Wine
 } from '@phosphor-icons/react';
 import { WEDDING_CONFIG } from '../config';
 import './Info.css';
