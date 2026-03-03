@@ -16,11 +16,11 @@ export const WEDDING_CONFIG = {
 
   // Fecha y hora
   date: {
-    full: new Date('2026-08-22T17:00:00'),
+    full: new Date('2026-08-22T18:30:00'),
     display: '22 Agosto 2026',
     short: '22.08.26',
-    time: '17:00',
-    calendarStart: '20260822T170000',
+    time: '18:30',
+    calendarStart: '20260822T183000',
     calendarEnd: '20260823T040000',
   },
 
@@ -126,11 +126,11 @@ export const WEDDING_CONFIG = {
   faq: [
     {
       question: '¿Hay parking disponible?',
-      answer: 'Sí, el venue dispone de parking gratuito para todos los invitados.',
+      answer: 'Sí, el pazo dispone de parking gratuito para todos los invitados.',
     },
     {
       question: '¿Pueden asistir niños?',
-      answer: 'Por supuesto, los más pequeños son bienvenidos. Habrá una zona infantil.',
+      answer: 'Por supuesto, los más pequeños son bienvenidos.',
     },
     {
       question: '¿Hay opciones vegetarianas/veganas?',
