@@ -44,10 +44,10 @@ export const WEDDING_CONFIG = {
 
   // APIs
   api: {
-    attendance: 'https://script.google.com/macros/s/AKfycby0zE9_x__FlkPMZAiqHljaPBQdDTBt88CX4mX7I2yiSJCB4fq52A65MoG8Dqrv72JI/exec',
-    musicSuggestions: 'https://script.google.com/macros/s/AKfycby0zE9_x__FlkPMZAiqHljaPBQdDTBt88CX4mX7I2yiSJCB4fq52A65MoG8Dqrv72JI/exec',
-    preboda: 'https://script.google.com/macros/s/AKfycby0zE9_x__FlkPMZAiqHljaPBQdDTBt88CX4mX7I2yiSJCB4fq52A65MoG8Dqrv72JI/exec',
-    quiz: 'https://script.google.com/macros/s/AKfycby0zE9_x__FlkPMZAiqHljaPBQdDTBt88CX4mX7I2yiSJCB4fq52A65MoG8Dqrv72JI/exec',
+    attendance: 'https://script.google.com/macros/s/AKfycbzg8CGGQnkYAxpGD-6zLj163UtjUo1vyl7hIdz5djlAee5exHgpB1yItA8k8XBe52dY/exec',
+    musicSuggestions: 'https://script.google.com/macros/s/AKfycbzg8CGGQnkYAxpGD-6zLj163UtjUo1vyl7hIdz5djlAee5exHgpB1yItA8k8XBe52dY/exec',
+    preboda: 'https://script.google.com/macros/s/AKfycbzg8CGGQnkYAxpGD-6zLj163UtjUo1vyl7hIdz5djlAee5exHgpB1yItA8k8XBe52dY/exec',
+    quiz: 'https://script.google.com/macros/s/AKfycbzg8CGGQnkYAxpGD-6zLj163UtjUo1vyl7hIdz5djlAee5exHgpB1yItA8k8XBe52dY/exec',
   },
 
   // Spotify
