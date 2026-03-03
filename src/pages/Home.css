@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Meow+Script&display=swap');
+
 /* Evitar zoom en inputs en móviles (iOS/Safari) */
 input,
 select,
@@ -9,8 +11,6 @@ textarea {
    Color: #6f2439 (burgundy) / #fff (white)
    Fonts: MeowScript, Recoleta (Calm Serif), UniNeue (ZT Nature), Cormorant Garamond
    ════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Meow+Script&display=swap');
 
 @font-face {
   font-display: swap;
@@ -245,21 +245,54 @@ textarea {
 }
 
 .tw-hero__frame-subtitle {
-  padding: 1.5rem 1rem;
+  padding: 0.5rem 0.5rem 0.2rem 0.5rem;
   text-align: center;
-  text-transform: uppercase;
   width: 100%;
+  text-transform: none;
 }
 
 .tw-hero__frame-subtitle p {
   animation: tw-fadeInUp 1.2s ease-out 0.7s both;
   color: #fff;
-  font-family: 'UniNeue', serif;
-  font-size: 1.6rem;
-  font-weight: 300 !important;
-  letter-spacing: 0.05em;
-  line-height: 1.6;
+  font-family: 'Recoleta', serif;
+  font-size: 1.1rem;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
   margin: 0;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .tw-hero__frame-subtitle {
+    padding: 0.5rem 0.5rem 0.2rem 0.5rem;
+  }
+  .tw-hero__frame-subtitle p {
+    font-size: 1rem;
+    white-space: normal;
+    text-overflow: unset;
+    line-height: 1.2;
+  }
+}
+
+.tw-hero__celebration-bold {
+  font-weight: 700 !important;
+  font-family: 'Recoleta', serif;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .tw-hero__celebration-bold {
+    font-size: 1.1rem !important;
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 /* ═══════════════════
@@ -1230,6 +1263,39 @@ textarea {
   .tw-schedule__deco {
     max-height: 150px;
   }
+
+  /* FAQ: hide side decos and stack vertically on iPad */
+  .tw-faqs__deco--left,
+  .tw-faqs__deco--right {
+    display: none;
+  }
+
+  .tw-faqs__container {
+    flex-direction: column;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .tw-faqs__list {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .tw-faqs__decos-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .tw-faqs__decos-mobile img {
+    width: 120px;
+    height: auto;
+    opacity: 0.9;
+    object-fit: contain;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1536,5 +1602,12 @@ textarea {
   .tw-flip-card__back-content .tw-btn {
     font-size: 0.6rem;
     padding: 0.3rem 0.6rem;
+  }
+
+  .tw-hero__frame-subtitle p {
+    font-size: 0.82rem !important;
+    padding: 0 0.1rem !important;
+    max-width: 100vw !important;
+    word-break: break-word !important;
   }
 }

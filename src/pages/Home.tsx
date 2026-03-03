@@ -217,11 +217,6 @@ function Home() {
               <p>{date.display.toUpperCase()}</p>
             </div>
           </div>
-          <div className="tw-hero__frame-subtitle">
-            <p className="tw-closing__quote" style={{ maxWidth: 400, margin: '0 auto', fontWeight: 700 }}>
-              ¡Nos casamos y queremos celebrarlo contigo!
-            </p>
-          </div>
         </div>
       </section>
 
@@ -291,12 +286,12 @@ function Home() {
           ))}
         </div>
         <div className="tw-schedule__images-grid">
-          <img src={`${IMG}/Max.png`} alt="" className="tw-schedule__deco tw-schedule__deco--1" />
-          <img src={`${IMG}/Casa.png`} alt="" className="tw-schedule__deco tw-schedule__deco--2" />
-          <img src={`${IMG}/Jarron.png`} alt="" className="tw-schedule__deco tw-schedule__deco--3" />
-          <img src={`${IMG}/Max.png`} alt="" className="tw-schedule__deco tw-schedule__deco--1" />
-          <img src={`${IMG}/Casa.png`} alt="" className="tw-schedule__deco tw-schedule__deco--2" />
-          <img src={`${IMG}/Jarron.png`} alt="" className="tw-schedule__deco tw-schedule__deco--3" />
+          <img src={`${IMG}/Casa.png`} alt="" className="tw-schedule__deco tw-schedule__deco--1" />
+          <img src={`${IMG}/Copas.png`} alt="" className="tw-schedule__deco tw-schedule__deco--2" />
+          <img src={`${IMG}/bola.png`} alt="" className="tw-schedule__deco tw-schedule__deco--3" />
+          <img src={`${IMG}/Casa.png`} alt="" className="tw-schedule__deco tw-schedule__deco--1" />
+          <img src={`${IMG}/Copas.png`} alt="" className="tw-schedule__deco tw-schedule__deco--2" />
+          <img src={`${IMG}/bola.png`} alt="" className="tw-schedule__deco tw-schedule__deco--3" />
         </div>
       </section>
 
@@ -477,10 +472,10 @@ function Home() {
             ))}
           </div>
           <div className="tw-faqs__decos-mobile">
-            <img src={`${IMG}/Copas.png`} alt="" />
+            <img src={`${IMG}/Jarron.png`} alt="" />
             <img src={`${IMG}/Casa2.png`} alt="" />
           </div>
-          <img src={`${IMG}/Copas.png`} alt="" className="tw-faqs__deco tw-faqs__deco--left" />
+          <img src={`${IMG}/Jarron.png`} alt="" className="tw-faqs__deco tw-faqs__deco--left" />
           <img src={`${IMG}/Casa2.png`} alt="" className="tw-faqs__deco tw-faqs__deco--right" />
         </div>
       </section>
@@ -554,7 +549,7 @@ function Home() {
             <p className="tw-closing__names">{couple.name1} y {couple.name2}</p>
           </div>
           <div className="tw-closing__image-wrapper">
-            <img src={`${IMG}/Max final.png`} alt="¡No puedes faltar!" className="tw-closing__image" />
+            <img src={`${IMG}/novia.png`} alt="¡No puedes faltar!" className="tw-closing__image" />
           </div>
         </div>
       </section>
