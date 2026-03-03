@@ -92,6 +92,7 @@ function Musica() {
                 onChange={(e) => setSong(e.target.value)}
                 placeholder=" "
                 id="song"
+                autoComplete="off"
               />
               <label htmlFor="song">Nombre de la canción *</label>
             </div>
@@ -103,6 +104,7 @@ function Musica() {
                 onChange={(e) => setArtist(e.target.value)}
                 placeholder=" "
                 id="artist"
+                autoComplete="off"
               />
               <label htmlFor="artist">Artista (opcional)</label>
             </div>
@@ -114,6 +116,7 @@ function Musica() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder=" "
                 id="name"
+                autoComplete="off"
               />
               <label htmlFor="name">Tu nombre (opcional)</label>
             </div>

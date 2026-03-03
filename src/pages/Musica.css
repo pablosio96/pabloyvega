@@ -136,7 +136,19 @@
 
 .form-field input:focus {
   outline: none;
-  border-bottom-color: #1DB954;
+  border-bottom-color: var(--color-text);
+}
+
+.form-field input:-webkit-autofill,
+.form-field input:-webkit-autofill:hover,
+.form-field input:-webkit-autofill:focus,
+.form-field input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 60px var(--color-bg) inset !important;
+  -webkit-text-fill-color: var(--color-text) !important;
+  caret-color: var(--color-text);
+  border-bottom-color: #ccc !important;
+  background-color: transparent !important;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
 .form-field label {

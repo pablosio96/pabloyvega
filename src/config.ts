@@ -10,14 +10,14 @@ export const WEDDING_CONFIG = {
   couple: {
     name1: 'Pablo',
     name2: 'Vega',
-    fullNames: 'Pablo & Vega',
+    fullNames: 'Pablo y Vega',
     footerNames: 'Pablo + Vega',
   },
 
   // Fecha y hora
   date: {
     full: new Date('2026-08-22T17:00:00'),
-    display: '22 de Agosto de 2026',
+    display: '22 Agosto 2026',
     short: '22.08.26',
     time: '17:00',
     calendarStart: '20260822T170000',
@@ -26,7 +26,7 @@ export const WEDDING_CONFIG = {
 
   // Ubicación del venue
   venue: {
-    name: 'Rectoral de Cobres, 1729',
+    name: 'Rectoral de Cobres',
     address: '36142 Vilaboa, Pontevedra (España)',
     city: 'Vigo',
     lat: 42.307742,
@@ -68,26 +68,20 @@ export const WEDDING_CONFIG = {
   // Web
   web: {
     url: 'https://pabloyvega.com',
-    title: 'Pablo & Vega - ¡Nos casamos!',
+    title: 'Pablo y Vega - ¡Nos casamos!',
     description: 'Te invitamos a celebrar nuestra boda el 22 de agosto de 2026.',
   },
 
   // Programa del día
   timeline: [
     {
-      time: '17:30',
-      title: 'Llegada a la Rectoral',
-      description: '¡Bienvenidos! Aparcad el coche o llegad en bus y empezad a disfrutar del día.',
-      icon: 'bus',
-    },
-    {
-      time: '18:00',
+      time: '18:30',
       title: 'Ceremonia',
       description: 'Nos damos el "Sí, quiero". Os esperamos puntuales para no perderos ni un momento.',
       icon: 'rings',
     },
     {
-      time: '19:00',
+      time: '19:30',
       title: 'Cóctel',
       description: 'Brindis y aperitivos mientras disfrutamos juntos de la puesta de sol.',
       icon: 'glass',
@@ -103,12 +97,6 @@ export const WEDDING_CONFIG = {
       title: 'Fiesta',
       description: '¡A bailar! La pista de baile os espera para celebrar toda la noche.',
       icon: 'music',
-    },
-    {
-      time: '04:00',
-      title: 'Fin de fiesta',
-      description: 'Tras haber disfrutado de una noche llena de baile y alegría, cada mochuelo a su olivo.',
-      icon: 'moon',
     },
   ],
 
@@ -145,16 +133,16 @@ export const WEDDING_CONFIG = {
       answer: 'Por supuesto, los más pequeños son bienvenidos. Habrá una zona infantil.',
     },
     {
-      question: '¿Cuál es el código de vestimenta?',
-      answer: 'Elegante pero cómodo. Evitar el color blanco que está reservado para la novia.',
-    },
-    {
       question: '¿Hay opciones vegetarianas/veganas?',
       answer: 'Sí, indicadlo en el formulario de asistencia y lo tendremos en cuenta.',
     },
     {
-      question: '¿Puedo llevar acompañante?',
-      answer: 'Si tu invitación incluye acompañante, indícalo en el formulario de asistencia.',
+      question: '¿Nos queréis hacer un regalo?',
+      answer: 'Os dejamos nuestra cuenta bancaria:<br><br><span class="tw-faq-icon"></span> IBAN: <span class="tw-faq-copy" data-copy="ES55 2080 5043 9130 4007 9723">ES55 2080 5043 9130 4007 9723</span>',
+    },
+    {
+      question: '¿Alguna pregunta más?',
+      answer: '¡Aquí estamos! Podéis contactarnos en:<br><br><span class="tw-faq-icon">✉</span> <a href="mailto:bodapabloyvega@gmail.com">bodapabloyvega@gmail.com</a><br><span class="tw-faq-icon">✆</span> Pablo: <a href="tel:+34677171977">677 171 977</a><br><span class="tw-faq-icon">✆</span> Vega: <a href="tel:+34690027180">690 027 180</a>',
     },
   ],
 

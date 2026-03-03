@@ -157,6 +157,7 @@ function TextInput({ label, name, value, onChange, error, type = 'text', placeho
         onChange={onChange}
         placeholder={placeholder || ' '}
         id={name}
+        autoComplete="off"
       />
       <label htmlFor={name}>{label}</label>
       {error && <span className="error">{error}</span>}
@@ -345,7 +346,7 @@ function Asistencia() {
             {step === 1 && (
               <div className="form-step">
                 <div className="form-section">
-                  <h3 className="section-label">¿Cómo te llamas?</h3>
+                  <p className="section-label">¿Cómo te llamas?</p>
                   <div className="form-row">
                     <TextInput
                       label="Nombre"
@@ -367,7 +368,7 @@ function Asistencia() {
                 </div>
 
                 <div className="form-section">
-                  <h3 className="section-label">¿Cómo contactamos contigo?</h3>
+                  <p className="section-label">¿Cómo contactamos contigo?</p>
                   <div className="form-row">
                     <TextInput
                       label="Teléfono"
