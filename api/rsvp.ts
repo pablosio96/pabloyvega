@@ -47,14 +47,58 @@ export default async function handler(req, res) {
           to: ['bodapabloyvega@gmail.com'],
           subject: `🔔 Nueva confirmación de asistencia: ${nombre} ${apellidos}`,
           html: `
-            <h2>Nueva confirmación de asistencia</h2>
-            <p><strong>Nombre:</strong> ${nombre} ${apellidos}</p>
-            <p><strong>Acompañantes:</strong> ${acompanantes || 'Ninguno'}</p>
-            <p><strong>Teléfono:</strong> ${telefono}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Autobús:</strong> ${bus === 'sí' ? 'Sí' : 'No'} (${parada || 'N/A'})</p>
-            <p><strong>Talla zapatos:</strong> ${talla || 'N/A'}</p>
-            <p><strong>Preferencias:</strong> ${preferencias || 'Sin preferencias'}</p>
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            </head>
+            <body style="margin:0;padding:0;background-color:#f5f0ee;font-family:Georgia,serif;">
+              <div style="background-color:#f5f0ee;padding:40px 16px;">
+                <div style="background:#ffffff;max-width:520px;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
+                  <div style="background:${ACCENT};padding:28px 24px;text-align:center;">
+                    <h2 style="margin:0 0 8px 0;font-family:Georgia,serif;font-size:26px;font-weight:normal;color:#fff;letter-spacing:1px;">Nueva confirmación de asistencia</h2>
+                    <p style="margin:0;font-size:15px;color:rgba(255,255,255,0.8);">22 · 08 · 2026 · Rectoral de Cobres</p>
+                  </div>
+                  <div style="padding:28px 24px 18px 24px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#333;">
+                      <tr>
+                        <td style="padding:8px 0;font-weight:bold;color:${ACCENT};">Nombre</td>
+                        <td style="padding:8px 0;text-align:right;">${nombre} ${apellidos}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:8px 0;font-weight:bold;color:${ACCENT};">Acompañantes</td>
+                        <td style="padding:8px 0;text-align:right;">${acompanantes || 'Ninguno'}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:8px 0;font-weight:bold;color:${ACCENT};">Teléfono</td>
+                        <td style="padding:8px 0;text-align:right;">${telefono}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:8px 0;font-weight:bold;color:${ACCENT};">Email</td>
+                        <td style="padding:8px 0;text-align:right;">${email}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:8px 0;font-weight:bold;color:${ACCENT};">Autobús</td>
+                        <td style="padding:8px 0;text-align:right;">${bus === 'sí' ? 'Sí, desde ' + parada : 'No necesita'}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:8px 0;font-weight:bold;color:${ACCENT};">Talla zapatos</td>
+                        <td style="padding:8px 0;text-align:right;">${talla || 'N/A'}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:8px 0;font-weight:bold;color:${ACCENT};">Preferencias</td>
+                        <td style="padding:8px 0;text-align:right;">${preferencias || 'Sin preferencias'}</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div style="background:${ACCENT};padding:18px 24px;text-align:center;">
+                    <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.8);letter-spacing:0.1em;">¡Revisa el panel de administración para más detalles!</p>
+                  </div>
+                </div>
+              </div>
+            </body>
+            </html>
           `,
         });
 
