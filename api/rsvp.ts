@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
     // Enviar emails de notificación si existe la API KEY
     if (process.env.RESEND_API_KEY) {
-      const ACCENT = '#a88d7f'; // Color elegante que combina con los tonos de boda
+      const ACCENT = '#4A6FA5'; // Color azul principal de la web
 
       try {
         // 1. Notificación para vosotros
@@ -62,7 +62,7 @@ export default async function handler(req, res) {
         await resend.emails.send({
           from: 'Pablo y Vega <hola@pabloyvega.com>',
           to: [email],
-          subject: '¡Confirmación recibida! Boda Pablo y Vega',
+          subject: '¡Confirmación recibida!',
           html: `
             <!DOCTYPE html>
             <html>
