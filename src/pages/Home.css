@@ -9,12 +9,12 @@ textarea {
 /* ════════════════════════════════════════════
    Wedding Invitation – Test Page
    Color: #6f2439 (burgundy) / #fff (white)
-   Fonts: MeowScript, Recoleta (Calm Serif), UniNeue (ZT Nature), Cormorant Garamond
+   Fonts: MeowScript, Cormorant Garamond (Calm Serif), UniNeue (ZT Nature), Cormorant Garamond
    ════════════════════════════════════════════ */
 
 @font-face {
   font-display: swap;
-  font-family: 'UniNeue';
+  font-family: 'Montserrat', sans-serif !important;
   font-style: normal;
   font-weight: 400;
   src: url('/fonts/ZTNature-Medium.ttf') format('truetype');
@@ -22,7 +22,7 @@ textarea {
 
 @font-face {
   font-display: swap;
-  font-family: 'Recoleta';
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: normal;
   font-weight: 400;
   src: url('/fonts/Calm-Serif.otf') format('opentype');
@@ -81,7 +81,7 @@ textarea {
   color: var(--tw-white);
   cursor: pointer;
   display: inline-block;
-  font-family: 'UniNeue', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
   font-weight: 500 !important;
   letter-spacing: 0.08em;
@@ -236,7 +236,7 @@ textarea {
 .tw-hero__frame-text p {
   animation: tw-fadeInUp 1.2s ease-out 0.5s both;
   color: #fff;
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(1.2rem, 3vw, 2.2rem);
   font-weight: 300 !important;
   letter-spacing: 0.05em;
@@ -254,7 +254,7 @@ textarea {
 .tw-hero__frame-subtitle p {
   animation: tw-fadeInUp 1.2s ease-out 0.7s both;
   color: #fff;
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
   font-weight: 700 !important;
   letter-spacing: 0.01em;
@@ -280,7 +280,7 @@ textarea {
 
 .tw-hero__celebration-bold {
   font-weight: 700 !important;
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   white-space: normal;
   overflow: visible;
   text-overflow: unset;
@@ -309,7 +309,7 @@ textarea {
 }
 
 .tw-locations__hint {
-  font-family: 'UniNeue', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.8rem;
   font-weight: 400 !important;
   color: var(--tw-accent);
@@ -435,7 +435,7 @@ textarea {
 
 .tw-flip-card__front h3,
 .tw-flip-card__text h3 {
-  font-family: 'UniNeue', sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
   font-size: 1.2rem;
   font-weight: 600 !important;
   font-style: normal !important;
@@ -446,7 +446,7 @@ textarea {
 
 .tw-flip-card__front p,
 .tw-flip-card__text p {
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.95rem;
   font-weight: 300 !important;
   color: var(--tw-accent);
@@ -588,7 +588,7 @@ textarea {
 .tw-schedule__deco--3 { rotate: 10deg; }
 
 .tw-schedule__time {
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
   font-weight: 300 !important;
   letter-spacing: 0.05em;
@@ -610,7 +610,7 @@ textarea {
 }
 
 .tw-rsvp__title {
-  font-family: 'Recoleta', serif !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 400 !important;
   font-style: normal !important;
@@ -685,7 +685,7 @@ textarea {
 }
 
 .tw-rsvp__field label {
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.8rem;
   font-weight: 900 !important;
   color: var(--tw-accent);
@@ -794,7 +794,7 @@ textarea {
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 /* ═══════════════════
@@ -913,7 +913,7 @@ textarea {
   border: none;
   color: var(--tw-white);
   cursor: pointer;
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.95rem;
   letter-spacing: 0.1em;
   padding: 0;
@@ -940,7 +940,7 @@ textarea {
 
 .tw-faqs__answer {
   color: rgba(255, 255, 255, 0.8);
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.9rem;
   line-height: 1.6;
   margin: 1rem 0 0;
@@ -951,7 +951,7 @@ textarea {
 
 .tw-faqs__answer {
   color: rgba(255, 255, 255, 0.85);
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.15rem;
   line-height: 1.7;
   margin: 1.2rem 0 0;
@@ -1022,7 +1022,7 @@ textarea {
 
 .tw-music__title {
   color: var(--tw-accent-light);
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 3rem;
   font-weight: 300 !important;
   letter-spacing: 0.5px;
@@ -1077,7 +1077,7 @@ textarea {
 }
 
 .tw-music__form .tw-rsvp__field label {
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.8rem;
   font-weight: 900 !important;
   color: var(--tw-accent);
@@ -1159,7 +1159,7 @@ textarea {
 }
 
 .tw-closing__quote {
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.3rem, 3.5vw, 3rem);
   font-weight: 400 !important;
   letter-spacing: 0.02em;
@@ -1182,12 +1182,11 @@ textarea {
   width: 100%;
   height: auto;
   filter: brightness(0) invert(1);
-  opacity: 0.4;
   position: absolute;
 }
 
 .tw-closing__countdown-text {
-  font-family: 'Recoleta', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   font-weight: 400 !important;
   letter-spacing: 0.05em;

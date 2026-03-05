@@ -16,7 +16,8 @@ export const WEDDING_CONFIG = {
 
   // Fecha y hora
   date: {
-    full: new Date('2026-08-22T18:30:00'),
+    // Guardar como string y crear Date en el componente para evitar desfases
+    full: '2026-08-22', // solo fecha
     display: '22 Agosto 2026',
     short: '22.08.26',
     time: '18:30',

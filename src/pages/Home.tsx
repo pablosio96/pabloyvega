@@ -90,7 +90,11 @@ function Home() {
   const [musicSent, setMusicSent] = useState(false);
   const [musicSending, setMusicSending] = useState(false);
   const [musicError, setMusicError] = useState('');
-  const countdown = useCountdown(new Date(date.full));
+  // Crear la fecha como local (España) para evitar desfases de zona horaria
+  // Crear la fecha local de forma robusta (independiente de navegador)
+  const [year, month, day] = date.full.split('-').map(Number);
+  const [hour, minute] = date.time.split(':').map(Number);
+  const countdown = useCountdown(new Date(year, month - 1, day, hour + 1, minute + 1));
 
   // refs para scroll tras éxito
   const rsvpSuccessRef = useRef<HTMLDivElement>(null);
