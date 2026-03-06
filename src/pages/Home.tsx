@@ -436,7 +436,7 @@ function Home() {
 
       {/* ═══ DRESSCODE ═══ */}
       <section className="tw-dresscode">    
-        <img src={`${IMG}/rsvp.png`} alt="Dresscode" className="tw-dresscode__image" />
+        <img src={`${IMG}/baile_azul.png`} alt="Dresscode" className="tw-dresscode__image" />
       </section>
 
       {/* ═══ FAQS ═══ */}
@@ -534,10 +534,6 @@ function Home() {
             </form>
           )}
         </div>
-      </section>
-
-      <section className="tw-dresscode">    
-        <img src={`${IMG}/baile_azul.png`} alt="Dresscode" className="tw-dresscode__image" />
       </section>
 
       {/* ═══ CLOSING ═══ */}
