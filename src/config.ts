@@ -139,7 +139,7 @@ export const WEDDING_CONFIG = {
     },
     {
       question: '¿Y si os queremos hacer un regalo?',
-      answer: 'Os dejamos nuestra cuenta bancaria:<br><br><span class="tw-faq-icon"></span> IBAN: <span class="tw-faq-copy" data-copy="ES55 2080 5043 9130 4007 9723">ES55 2080 5043 9130 4007 9723</span>',
+      answer: 'Os dejamos nuestra cuenta bancaria:<br><br><span class="tw-faq-icon"></span> Titular: Pablo y Vega<br>IBAN: <span class="tw-faq-copy" data-copy="ES55 2080 5043 9130 4007 9723">ES55 2080 5043 9130 4007 9723</span>',
     },
     {
       question: '¿Alguna pregunta más?',

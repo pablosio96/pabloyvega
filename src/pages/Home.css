@@ -923,7 +923,7 @@ textarea {
 }
 
 .tw-faqs__question:hover {
-  color: #f0d9df;
+  color: var(--tw-white);
 }
 
 .tw-faqs__icon {
@@ -952,7 +952,7 @@ textarea {
 .tw-faqs__answer {
   color: rgba(255, 255, 255, 0.85);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
+  font-size: 1em;
   line-height: 1.7;
   margin: 1.2rem 0 0;
   animation: tw-slideDown 0.3s ease;
@@ -998,7 +998,7 @@ textarea {
 }
 
 .tw-faq-copy.copied {
-  color: #a8f0a8;
+  color: inherit;
 }
 
 @keyframes tw-slideDown {
@@ -1408,7 +1408,7 @@ textarea {
   }
 
   .tw-faqs__answer {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
   }
 
   .tw-faqs {
@@ -1489,7 +1489,6 @@ textarea {
 
 @media (max-width: 480px) {
   .tw-section-title {
-    font-size: 3rem;
   }
 
   .tw-locations {
