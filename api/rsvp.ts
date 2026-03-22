@@ -57,8 +57,8 @@ export default async function handler(req, res) {
               <div style="background-color:#ffffff;padding:40px 16px;">
                 <div style="background:#ffffff;max-width:520px;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
                   <div style="background:${ACCENT};padding:28px 24px;text-align:center;">
-                    <h2 style="margin:0 0 8px 0;font-family:Georgia,serif;font-size:26px;font-weight:normal;color:#fff;letter-spacing:1px;">Nueva confirmación de asistencia</h2>
-                    <p style="margin:0;font-size:15px;color:#fff;">22 · 08 · 2026 · Rectoral de Cobres</p>
+                    <h2 style="margin:0 0 8px 0;font-family:Georgia,serif;font-size:26px;font-weight:normal;color:#ffffff;letter-spacing:1px;">Nueva confirmación de asistencia</h2>
+                    <p style="margin:0;font-size:15px;color:#ffffff;">22 · 08 · 2026 · Rectoral de Cobres</p>
                   </div>
                   <div style="padding:28px 24px 18px 24px;">
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#333;">
@@ -93,7 +93,7 @@ export default async function handler(req, res) {
                     </table>
                   </div>
                   <div style="background:${ACCENT};padding:18px 24px;text-align:center;">
-                    <p style="margin:0;font-size:13px;color:#fff;letter-spacing:0.1em;">¡Revisa el panel de administración para más detalles!</p>
+                    <p style="margin:0;font-size:13px;color:#ffffff;letter-spacing:0.1em;">¡Revisa el panel de administración para más detalles!</p>
                   </div>
                 </div>
               </div>
@@ -121,13 +121,13 @@ export default async function handler(req, res) {
 
                   <!-- Header -->
                   <div style="background:${ACCENT};padding:40px 32px;text-align:center;">
-                    <p style="margin:0 0 6px 0;font-family:Georgia,serif;font-size:13px;font-weight:normal;color:#fff;letter-spacing:0.25em;text-transform:uppercase;">
+                    <p style="margin:0 0 6px 0;font-family:Georgia,serif;font-size:13px;font-weight:normal;color:#ffffff;letter-spacing:0.25em;text-transform:uppercase;">
                       22 · 08 · 2026
                     </p>
-                    <h1 style="margin:0;font-family:'Meow Script',cursive;font-size:38px;font-weight:normal;color:#fff;letter-spacing:3px;">
+                    <h1 style="margin:0;font-family:'Meow Script',cursive;font-size:38px;font-weight:normal;color:#ffffff;letter-spacing:3px;">
                       Pablo y Vega
                     </h1>
-                    <p style="margin:14px 0 0 0;font-family:Georgia,serif;font-size:15px;font-weight:normal;color:#fff;letter-spacing:0.05em;">
+                    <p style="margin:14px 0 0 0;font-family:Georgia,serif;font-size:15px;font-weight:normal;color:#ffffff;letter-spacing:0.05em;">
                       Rectoral de Cobres · Pontevedra
                     </p>
                   </div>
@@ -188,7 +188,7 @@ export default async function handler(req, res) {
 
                   <!-- Footer -->
                   <div style="background:${ACCENT};padding:24px 32px;text-align:center;">
-                    <p style="margin:0;font-family:Georgia,serif;font-size:13px;font-weight:normal;color:#fff;letter-spacing:0.2em;text-transform:uppercase;">
+                    <p style="margin:0;font-family:Georgia,serif;font-size:13px;font-weight:normal;color:#ffffff;letter-spacing:0.2em;text-transform:uppercase;">
                       ¡Empieza la cuenta atrás!
                     </p>
                     <img src="https://pabloyvega.com/images/wedding/00_coche.png" alt="Coche" style="width:120px;max-width:100%;margin:24px auto 0 auto;display:block;" />
