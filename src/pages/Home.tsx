@@ -138,6 +138,9 @@ function Home() {
     } else if (!EMAIL_REGEX.test(rsvp.email)) {
       newErrors.email = 'Email inválido';
     }
+    if (rsvp.bus === 'sí' && !rsvp.parada) {
+      newErrors.parada = 'Selecciona una parada de autobús';
+    }
     if (Object.keys(newErrors).length > 0) {
       setRsvpErrors(newErrors);
       return;
