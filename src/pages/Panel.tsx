@@ -89,8 +89,10 @@ function CancionCard({ c }: { c: Cancion }) {
   return (
     <div className="panel__card">
       <div className="panel__card-header" style={{ cursor: 'default' }}>
-        <span className="panel__card-name">🎵 {c.cancion}</span>
-        <span className="panel__card-meta">{c.artista}</span>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div className="panel__card-name">🎵 {c.cancion}</div>
+          {c.artista && <div className="panel__card-meta" style={{ maxWidth: '100%', marginTop: 2 }}>{c.artista}</div>}
+        </div>
       </div>
       {c.nombre && (
         <div className="panel__card-body">
