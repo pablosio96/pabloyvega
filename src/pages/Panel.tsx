@@ -106,15 +106,22 @@ function CancionCard({ c }: { c: Cancion }) {
   );
 }
 
+const SESSION_KEY = 'panel_auth';
+
 function Panel() {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(() => sessionStorage.getItem(SESSION_KEY) === '1');
+
+  const handleAuth = () => {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    setAuth(true);
+  };
   const [asistentes, setAsistentes] = useState<Asistente[]>([]);
   const [canciones, setCanciones] = useState<Cancion[]>([]);
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState('');
   const [asistSort, setAsistSort] = useState<{ key: keyof Asistente; asc: boolean }>({ key: 'nombre', asc: true });
   const [cancionSort, setCancionSort] = useState<{ key: keyof Cancion; asc: boolean }>({ key: 'cancion', asc: true });
-  const [tab, setTab] = useState<'asistencia' | 'musica'>('asistencia');
+  const [tab, setTab] = useState<'asistencia' | 'musica' | 'preferencias'>('asistencia');
 
   useEffect(() => {
     if (!auth) return;
@@ -133,11 +140,22 @@ function Panel() {
     });
   }, [auth]);
 
-  if (!auth) return <PanelLogin onAuth={() => setAuth(true)} />;
+  if (!auth) return <PanelLogin onAuth={handleAuth} />;
 
   const sortedAsistentes = sortBy(asistentes, asistSort.key, asistSort.asc);
   const sortedCanciones = sortBy(canciones, cancionSort.key, cancionSort.asc);
   const conBus = asistentes.filter(a => a.bus === 'sí').length;
+
+  // Recuento por parada
+  const paradasCount = asistentes.reduce<Record<string, number>>((acc, a) => {
+    if (a.bus === 'sí' && a.parada) {
+      acc[a.parada] = (acc[a.parada] || 0) + 1;
+    }
+    return acc;
+  }, {});
+
+  // Preferencias alimenticias (solo los que tienen algo)
+  const conPreferencias = asistentes.filter(a => a.preferencias?.trim());
 
   const thSort = (key: keyof Asistente, label: string) => (
     <th onClick={() => setAsistSort(s => ({ key, asc: s.key === key ? !s.asc : true }))}>
@@ -180,6 +198,9 @@ function Panel() {
         <button className={`panel__tab${tab === 'musica' ? ' active' : ''}`} onClick={() => setTab('musica')}>
           Música
         </button>
+        <button className={`panel__tab${tab === 'preferencias' ? ' active' : ''}`} onClick={() => setTab('preferencias')}>
+          Dietas
+        </button>
       </div>
 
       <div className="panel__content">
@@ -189,6 +210,20 @@ function Panel() {
         {tab === 'asistencia' && (
           <>
             <p className="panel__section-title">{asistentes.length} asistentes</p>
+            {/* Recuento por parada */}
+            {conBus > 0 && (
+              <div className="panel__bus-summary">
+                <p className="panel__bus-summary-title">🚌 Autobús · {conBus} personas</p>
+                <div className="panel__bus-paradas">
+                  {Object.entries(paradasCount).map(([parada, count]) => (
+                    <div key={parada} className="panel__bus-parada">
+                      <span className="panel__bus-parada-name">{parada}</span>
+                      <span className="panel__bus-parada-count">{count}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             {loading ? <p className="panel__loading">Cargando...</p> : (
               <>
                 {/* Mobile: cards */}
@@ -262,6 +297,62 @@ function Panel() {
                           <td>{c.nombre || '-'}</td>
                           <td>{c.cancion || '-'}</td>
                           <td>{c.artista || '-'}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
+          </>
+        )}
+        {tab === 'preferencias' && (
+          <>
+            <p className="panel__section-title">{conPreferencias.length} preferencias alimenticias</p>
+            {loading ? <p className="panel__loading">Cargando...</p> : (
+              <>
+                {conPreferencias.length === 0 && (
+                  <p className="panel__loading">Ningún invitado ha indicado preferencias.</p>
+                )}
+                {/* Mobile: cards */}
+                <div className="panel__cards">
+                  {conPreferencias.map(a => (
+                    <div key={a.id} className="panel__card">
+                      <div className="panel__card-header" style={{ cursor: 'default' }}>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div className="panel__card-name">{a.nombre} {a.apellidos}</div>
+                          <div className="panel__card-meta" style={{ maxWidth: '100%', marginTop: 2 }}>
+                            <a href={`tel:${a.telefono}`} style={{ color: '#888', textDecoration: 'none' }}>{a.telefono}</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="panel__card-body">
+                        <div className="panel__field">
+                          <span className="panel__field-label">Preferencias</span>
+                          <span className="panel__field-value">{a.preferencias}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* Desktop: table */}
+                <div className="panel__table-wrap">
+                  <table className="panel__table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Preferencias alimenticias</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {conPreferencias.map((a, idx) => (
+                        <tr key={a.id}>
+                          <td>{idx + 1}</td>
+                          <td>{a.nombre} {a.apellidos}</td>
+                          <td>{a.telefono}</td>
+                          <td>{a.preferencias}</td>
                         </tr>
                       ))}
                     </tbody>
