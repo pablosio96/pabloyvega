@@ -1,0 +1,309 @@
+/* ── Panel de Control ── */
+.panel {
+  min-height: 100vh;
+  background: var(--color-primary, #22304a);
+  padding: 0 0 48px;
+}
+
+/* Header */
+.panel__header {
+  background: var(--color-primary, #22304a);
+  padding: 40px 24px 28px;
+  text-align: center;
+}
+
+.panel__title {
+  font-family: 'Meow Script', 'MeowScript', cursive;
+  font-size: clamp(40px, 8vw, 64px);
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 4px;
+  line-height: 1.1;
+}
+
+.panel__subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Stats */
+.panel__stats {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 0 24px 24px;
+  flex-wrap: wrap;
+}
+
+.panel__stat {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 14px 24px;
+  text-align: center;
+  min-width: 100px;
+}
+
+.panel__stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.panel__stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* Tabs */
+.panel__tabs {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px 24px;
+  justify-content: center;
+}
+
+.panel__tab {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 50px;
+  padding: 10px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.panel__tab:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.panel__tab.active {
+  background: #ffffff;
+  color: var(--color-primary, #22304a);
+  border-color: transparent;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Content */
+.panel__content {
+  padding: 0 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.panel__section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 0 0 16px;
+}
+
+/* Loading */
+.panel__loading {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 48px 0;
+  font-size: 16px;
+}
+
+/* Cards grid */
+.panel__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel__card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.panel__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--color-primary, #22304a);
+  cursor: pointer;
+  gap: 8px;
+}
+
+.panel__card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel__card-meta {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+}
+
+.panel__card-chevron {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.panel__card-chevron.open {
+  transform: rotate(180deg);
+}
+
+.panel__card-body {
+  padding: 14px 18px;
+}
+
+.panel__field {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.panel__field:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.panel__field-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-primary, #22304a);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  min-width: 90px;
+  padding-top: 1px;
+  flex-shrink: 0;
+}
+
+.panel__field-value {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.panel__badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.panel__badge--yes {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.panel__badge--no {
+  background: #fafafa;
+  color: #888;
+}
+
+/* Desktop table */
+@media (min-width: 768px) {
+  .panel__cards {
+    display: none;
+  }
+
+  .panel__table-wrap {
+    display: block !important;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+    margin-bottom: 32px;
+  }
+
+  .panel__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    color: #333;
+  }
+
+  .panel__table thead tr {
+    background: var(--color-primary, #22304a);
+  }
+
+  .panel__table th {
+    padding: 14px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .panel__table th:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .panel__table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.15s;
+  }
+
+  .panel__table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .panel__table tbody tr:hover {
+    background: #f7f9fc;
+  }
+
+  .panel__table td {
+    padding: 12px 12px;
+    vertical-align: middle;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .panel__table td:first-child {
+    font-weight: 700;
+    color: var(--color-primary, #22304a);
+    width: 36px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .panel__table-wrap {
+    display: none;
+  }
+
+  .panel__cards {
+    display: flex;
+  }
+}
