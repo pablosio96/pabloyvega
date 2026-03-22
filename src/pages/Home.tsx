@@ -22,7 +22,7 @@ function useCountdown(target: Date) {
   const [time, setTime] = useState(calc);
 
   useEffect(() => {
-    const id = setInterval(() => setTime(calc()), 60000);
+    const id = setInterval(() => setTime(calc()), 1000); // Actualiza cada segundo
     return () => clearInterval(id);
   }, [calc]);
 
@@ -541,7 +541,7 @@ function Home() {
         <div className={`tw-closing__content ${closingObs.visible ? 'visible' : ''}`}>
           <div className="tw-closing__text">
             <p className="tw-closing__quote">
-              ¡Que empiece la fiesta...<br />y que nunca se acabe!
+              ¡Empieza la cuenta atrás!
             </p>
             <div className="tw-closing__countdown">
               <img src={`${IMG}/00_CURVAS.png`} alt="" className="tw-closing__frame" />

@@ -99,6 +99,12 @@ export const WEDDING_CONFIG = {
       description: '¡A bailar! La pista de baile os espera para celebrar toda la noche.',
       icon: 'music',
     },
+    {
+      time: '04:00',
+      title: 'Fin',
+      description: '¡Gracias por acompañarnos hasta el final! Cerramos la pista a las 4:00.',
+      icon: 'moon',
+    },
   ],
 
   // Hoteles recomendados
@@ -131,7 +137,7 @@ export const WEDDING_CONFIG = {
     },
     {
       question: '¿Pueden asistir niños?',
-      answer: 'Por supuesto, los más pequeños son bienvenidos.',
+      answer: 'Por supuesto, los más peques son bienvenidos.',
     },
     {
       question: '¿Hay opciones vegetarianas/veganas?',

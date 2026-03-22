@@ -189,7 +189,7 @@ export default async function handler(req, res) {
                   <!-- Footer -->
                   <div style="background:${ACCENT};padding:24px 32px;text-align:center;">
                     <p style="margin:0;font-family:Georgia,serif;font-size:13px;font-weight:normal;color:rgba(255,255,255,0.7);letter-spacing:0.2em;text-transform:uppercase;">
-                      ¡Que empiece la fiesta... y que nunca se acabe!
+                      ¡Empieza la cuenta atrás!
                     </p>
                     <img src="https://pabloyvega.com/images/wedding/00_coche.png" alt="Coche" style="width:120px;max-width:100%;margin:24px auto 0 auto;display:block;" />
                   </div>
