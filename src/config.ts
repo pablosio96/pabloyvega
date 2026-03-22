@@ -19,6 +19,7 @@ export const WEDDING_CONFIG = {
     // Guardar como string y crear Date en el componente para evitar desfases
     full: '2026-08-22', // solo fecha
     display: '22 Agosto 2026',
+    rsvp: '22 de Agosto',
     short: '22.08.26',
     time: '18:30',
     calendarStart: '20260822T183000',

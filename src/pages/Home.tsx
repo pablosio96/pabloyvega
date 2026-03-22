@@ -310,7 +310,7 @@ function Home() {
         {rsvpSent ? (
           <div className="tw-rsvp__thanks" ref={rsvpSuccessRef}>
             <p>¡Gracias por confirmar, {rsvp.nombre}!</p>
-            <p>Nos vemos el {date.display}.</p>
+            <p>Nos vemos el {date.rsvp}.</p>
             <button
               className="tw-btn tw-rsvp__calendar-btn"
               onClick={() => {
