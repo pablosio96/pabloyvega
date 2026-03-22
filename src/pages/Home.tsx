@@ -138,7 +138,9 @@ function Home() {
     } else if (!EMAIL_REGEX.test(rsvp.email)) {
       newErrors.email = 'Email inválido';
     }
-    if (rsvp.bus === 'sí' && !rsvp.parada) {
+    if (!rsvp.bus) {
+      newErrors.bus = 'Indica si necesitas autobús';
+    } else if (rsvp.bus === 'sí' && !rsvp.parada) {
       newErrors.parada = 'Selecciona una parada de autobús';
     }
     if (Object.keys(newErrors).length > 0) {
@@ -397,6 +399,7 @@ function Home() {
                   </label>
                 ))}
               </div>
+              {rsvpErrors.bus && <span className="tw-rsvp__field-error">{rsvpErrors.bus}</span>}
             </div>
 
             {/* Parada (condicional) */}
