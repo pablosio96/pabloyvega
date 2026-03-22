@@ -411,6 +411,7 @@ function Home() {
                     </label>
                   ))}
                 </div>
+                {rsvpErrors.parada && <span className="tw-rsvp__field-error">{rsvpErrors.parada}</span>}
               </div>
             )}
 
