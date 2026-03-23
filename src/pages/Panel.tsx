@@ -204,7 +204,7 @@ function Panel() {
           <div className="panel__stat-label">Total personas</div>
         </div>
         <div className="panel__stat">
-          <div className="panel__stat-number">{asistentes.length} / 45</div>
+          <div className="panel__stat-number">{asistentes.length} / 48</div>
           <div className="panel__stat-label">Confirmaciones</div>
         </div>
         <div className="panel__stat">
