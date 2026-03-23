@@ -313,15 +313,18 @@
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
     background: #ffffff;
     margin-bottom: 32px;
+    width: 100%;
+    max-width: 100vw;
   }
 
   .panel__table {
     width: 100%;
-    min-width: 900px;
+    min-width: 1200px;
     border-collapse: collapse;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 15px;
     color: #333;
+    table-layout: auto;
   }
 
   .panel__table thead tr {
