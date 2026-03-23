@@ -144,12 +144,20 @@ function Panel() {
 
   const sortedAsistentes = sortBy(asistentes, asistSort.key, asistSort.asc);
   const sortedCanciones = sortBy(canciones, cancionSort.key, cancionSort.asc);
-  const conBus = asistentes.filter(a => a.bus === 'sí').length;
+  // Cuenta personas en bus: el propio asistente + cada línea no vacía de acompañantes
+  const countPersonas = (a: Asistente) => {
+    const acomp = a.acompanantes?.split('\n').filter(l => l.trim()).length ?? 0;
+    return 1 + acomp;
+  };
 
-  // Recuento por parada
+  const conBus = asistentes
+    .filter(a => a.bus === 'sí')
+    .reduce((sum, a) => sum + countPersonas(a), 0);
+
+  // Recuento por parada (sumando acompañantes)
   const paradasCount = asistentes.reduce<Record<string, number>>((acc, a) => {
     if (a.bus === 'sí' && a.parada) {
-      acc[a.parada] = (acc[a.parada] || 0) + 1;
+      acc[a.parada] = (acc[a.parada] || 0) + countPersonas(a);
     }
     return acc;
   }, {});
