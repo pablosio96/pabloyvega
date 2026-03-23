@@ -413,42 +413,6 @@ function Panel() {
                     ))}
                   </div>
                 </div>
-                {/* Lista detallada */}
-                <div className="panel__cards">
-                  {asistentes.filter(a => a.talla?.trim()).map(a => (
-                    <div key={a.id} className="panel__card">
-                      <div className="panel__card-header" style={{ cursor: 'default' }}>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div className="panel__card-name">{a.nombre} {a.apellidos}</div>
-                          <div className="panel__card-meta" style={{ maxWidth: '100%', marginTop: 2 }}>{a.telefono}</div>
-                        </div>
-                        <span className="panel__bus-parada-count" style={{ marginLeft: 8 }}>{a.talla}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="panel__table-wrap">
-                  <table className="panel__table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Talla(s)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {asistentes.filter(a => a.talla?.trim()).map((a, idx) => (
-                        <tr key={a.id}>
-                          <td>{idx + 1}</td>
-                          <td>{a.nombre} {a.apellidos}</td>
-                          <td>{a.telefono}</td>
-                          <td>{a.talla}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
               </>
             )}
           </>
