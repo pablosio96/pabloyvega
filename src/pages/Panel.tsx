@@ -121,7 +121,7 @@ function Panel() {
   const [fetchError, setFetchError] = useState('');
   const [asistSort, setAsistSort] = useState<{ key: keyof Asistente; asc: boolean }>({ key: 'nombre', asc: true });
   const [cancionSort, setCancionSort] = useState<{ key: keyof Cancion; asc: boolean }>({ key: 'cancion', asc: true });
-  const [tab, setTab] = useState<'asistencia' | 'musica' | 'preferencias'>('asistencia');
+  const [tab, setTab] = useState<'asistencia' | 'musica' | 'preferencias' | 'tallas'>('asistencia');
 
   useEffect(() => {
     if (!auth) return;
@@ -167,6 +167,17 @@ function Panel() {
 
   // Total personas: cada asistente + sus acompañantes
   const totalPersonas = asistentes.reduce((sum, a) => sum + countPersonas(a), 0);
+
+  // Conteo de tallas (cada talla puede ser "38, 39" o una por línea)
+  const tallasCount = asistentes.reduce<Record<string, number>>((acc, a) => {
+    if (!a.talla?.trim()) return acc;
+    a.talla.split(/[,\n]/).forEach(t => {
+      const talla = t.trim();
+      if (talla) acc[talla] = (acc[talla] || 0) + 1;
+    });
+    return acc;
+  }, {});
+  const tallasOrdenadas = Object.entries(tallasCount).sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }));
 
   const thSort = (key: keyof Asistente, label: string) => (
     <th onClick={() => setAsistSort(s => ({ key, asc: s.key === key ? !s.asc : true }))}>
@@ -215,6 +226,9 @@ function Panel() {
         </button>
         <button className={`panel__tab${tab === 'preferencias' ? ' active' : ''}`} onClick={() => setTab('preferencias')}>
           Dietas
+        </button>
+        <button className={`panel__tab${tab === 'tallas' ? ' active' : ''}`} onClick={() => setTab('tallas')}>
+          Tallas
         </button>
       </div>
 
@@ -368,6 +382,68 @@ function Panel() {
                           <td>{a.nombre} {a.apellidos}</td>
                           <td>{a.telefono}</td>
                           <td>{a.preferencias}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
+          </>
+        )}
+
+        {tab === 'tallas' && (
+          <>
+            <p className="panel__section-title">
+              {Object.values(tallasCount).reduce((s, n) => s + n, 0)} chanclas · {tallasOrdenadas.length} tallas distintas
+            </p>
+            {loading ? <p className="panel__loading">Cargando...</p> : (
+              <>
+                {tallasOrdenadas.length === 0 && (
+                  <p className="panel__loading">Ningún invitado ha indicado talla.</p>
+                )}
+                <div className="panel__bus-summary">
+                  <p className="panel__bus-summary-title">👡 Recuento por talla</p>
+                  <div className="panel__bus-paradas">
+                    {tallasOrdenadas.map(([talla, count]) => (
+                      <div key={talla} className="panel__bus-parada">
+                        <span className="panel__bus-parada-name">Talla {talla}</span>
+                        <span className="panel__bus-parada-count">{count}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Lista detallada */}
+                <div className="panel__cards">
+                  {asistentes.filter(a => a.talla?.trim()).map(a => (
+                    <div key={a.id} className="panel__card">
+                      <div className="panel__card-header" style={{ cursor: 'default' }}>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div className="panel__card-name">{a.nombre} {a.apellidos}</div>
+                          <div className="panel__card-meta" style={{ maxWidth: '100%', marginTop: 2 }}>{a.telefono}</div>
+                        </div>
+                        <span className="panel__bus-parada-count" style={{ marginLeft: 8 }}>{a.talla}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="panel__table-wrap">
+                  <table className="panel__table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Talla(s)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {asistentes.filter(a => a.talla?.trim()).map((a, idx) => (
+                        <tr key={a.id}>
+                          <td>{idx + 1}</td>
+                          <td>{a.nombre} {a.apellidos}</td>
+                          <td>{a.telefono}</td>
+                          <td>{a.talla}</td>
                         </tr>
                       ))}
                     </tbody>
