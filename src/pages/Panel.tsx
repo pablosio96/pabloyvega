@@ -238,7 +238,7 @@ function Panel() {
         )}
         {tab === 'asistencia' && (
           <>
-            <p className="panel__section-title">{asistentes.length} asistentes</p>
+            <p className="panel__section-title">{totalPersonas} asistentes</p>
             {/* Recuento por parada */}
             {conBus > 0 && (
               <div className="panel__bus-summary">
