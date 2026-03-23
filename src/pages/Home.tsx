@@ -76,7 +76,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /* ── Component ── */
 
-function Home() {
+function Home({ showBus = true }: { showBus?: boolean }) {
   const [flipped, setFlipped] = useState<Record<number, boolean>>({});
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [rsvp, setRsvp] = useState<RsvpData>(INITIAL_RSVP);
@@ -138,10 +138,12 @@ function Home() {
     } else if (!EMAIL_REGEX.test(rsvp.email)) {
       newErrors.email = 'Email inválido';
     }
-    if (!rsvp.bus) {
-      newErrors.bus = 'Indica si necesitas autobús';
-    } else if (rsvp.bus === 'sí' && !rsvp.parada) {
-      newErrors.parada = 'Selecciona una parada de autobús';
+    if (showBus) {
+      if (!rsvp.bus) {
+        newErrors.bus = 'Indica si necesitas autobús';
+      } else if (rsvp.bus === 'sí' && !rsvp.parada) {
+        newErrors.parada = 'Selecciona una parada de autobús';
+      }
     }
     if (Object.keys(newErrors).length > 0) {
       setRsvpErrors(newErrors);
@@ -151,10 +153,11 @@ function Home() {
     setRsvpSending(true);
     setRsvpError('');
     try {
+      const payload = showBus ? rsvp : { ...rsvp, bus: 'no', parada: '' };
       const response = await fetch(WEDDING_CONFIG.api.attendance, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(rsvp),
+        body: JSON.stringify(payload),
       });
       if (response.ok) {
         setRsvpSent(true);
@@ -389,33 +392,37 @@ function Home() {
             </div>
 
             {/* Bus */}
-            <div className="tw-rsvp__field full">
-              <label>¿NECESITAS SERVICIO DE AUTOBÚS?</label>
-              <div className="tw-rsvp__radio-row">
-                {['sí', 'no'].map((opt) => (
-                  <label key={opt} className={`tw-rsvp__radio ${rsvp.bus === opt ? 'selected' : ''}`}>
-                    <input type="radio" name="bus" value={opt} checked={rsvp.bus === opt} onChange={handleChange} />
-                    <span>{opt === 'sí' ? 'Sí' : 'No'}</span>
-                  </label>
-                ))}
-              </div>
-              {rsvpErrors.bus && <span className="tw-rsvp__field-error">{rsvpErrors.bus}</span>}
-            </div>
-
-            {/* Parada (condicional) */}
-            {rsvp.bus === 'sí' && (
-              <div className="tw-rsvp__field full tw-rsvp__field--indent">
-                <label>¿DESDE DÓNDE SALDRÁS?</label>
-                <div className="tw-rsvp__radio-row">
-                  {PARADAS.map((p) => (
-                    <label key={p} className={`tw-rsvp__radio ${rsvp.parada === p ? 'selected' : ''}`}>
-                      <input type="radio" name="parada" value={p} checked={rsvp.parada === p} onChange={handleChange} />
-                      <span>{p}</span>
-                    </label>
-                  ))}
+            {showBus && (
+              <>
+                <div className="tw-rsvp__field full">
+                  <label>¿NECESITAS SERVICIO DE AUTOBÚS?</label>
+                  <div className="tw-rsvp__radio-row">
+                    {['sí', 'no'].map((opt) => (
+                      <label key={opt} className={`tw-rsvp__radio ${rsvp.bus === opt ? 'selected' : ''}`}>
+                        <input type="radio" name="bus" value={opt} checked={rsvp.bus === opt} onChange={handleChange} />
+                        <span>{opt === 'sí' ? 'Sí' : 'No'}</span>
+                      </label>
+                    ))}
+                  </div>
+                  {rsvpErrors.bus && <span className="tw-rsvp__field-error">{rsvpErrors.bus}</span>}
                 </div>
-                {rsvpErrors.parada && <span className="tw-rsvp__field-error">{rsvpErrors.parada}</span>}
-              </div>
+
+                {/* Parada (condicional) */}
+                {rsvp.bus === 'sí' && (
+                  <div className="tw-rsvp__field full tw-rsvp__field--indent">
+                    <label>¿DESDE DÓNDE SALDRÁS?</label>
+                    <div className="tw-rsvp__radio-row">
+                      {PARADAS.map((p) => (
+                        <label key={p} className={`tw-rsvp__radio ${rsvp.parada === p ? 'selected' : ''}`}>
+                          <input type="radio" name="parada" value={p} checked={rsvp.parada === p} onChange={handleChange} />
+                          <span>{p}</span>
+                        </label>
+                      ))}
+                    </div>
+                    {rsvpErrors.parada && <span className="tw-rsvp__field-error">{rsvpErrors.parada}</span>}
+                  </div>
+                )}
+              </>
             )}
 
             {/* Talla */}

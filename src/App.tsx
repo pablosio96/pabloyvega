@@ -8,6 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/familia" element={<Home showBus={false} />} />
         <Route path="/panel" element={<Panel />} />
       </Routes>
     </BrowserRouter>
