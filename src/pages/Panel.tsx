@@ -189,12 +189,16 @@ function Panel() {
 
       <div className="panel__stats">
         <div className="panel__stat">
+          <div className="panel__stat-number">{totalPersonas}</div>
+          <div className="panel__stat-label">Total personas</div>
+        </div>
+        <div className="panel__stat">
           <div className="panel__stat-number">{asistentes.length}</div>
-          <div className="panel__stat-label">Confirmados</div>
+          <div className="panel__stat-label">Confirmaciones</div>
         </div>
         <div className="panel__stat">
           <div className="panel__stat-number">{conBus}</div>
-          <div className="panel__stat-label">Con autobús</div>
+          <div className="panel__stat-label">En autobús</div>
         </div>
         <div className="panel__stat">
           <div className="panel__stat-number">{canciones.length}</div>
