@@ -165,6 +165,9 @@ function Panel() {
   // Preferencias alimenticias (solo los que tienen algo)
   const conPreferencias = asistentes.filter(a => a.preferencias?.trim());
 
+  // Total personas: cada asistente + sus acompañantes
+  const totalPersonas = asistentes.reduce((sum, a) => sum + countPersonas(a), 0);
+
   const thSort = (key: keyof Asistente, label: string) => (
     <th onClick={() => setAsistSort(s => ({ key, asc: s.key === key ? !s.asc : true }))}>
       {label} {asistSort.key === key ? (asistSort.asc ? '↑' : '↓') : ''}
