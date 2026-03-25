@@ -144,10 +144,15 @@ function Panel() {
 
   const sortedAsistentes = sortBy(asistentes, asistSort.key, asistSort.asc);
   const sortedCanciones = sortBy(canciones, cancionSort.key, cancionSort.asc);
-  // Cuenta personas en bus: el propio asistente + cada línea no vacía de acompañantes
+  // Cuenta personas: el propio asistente + cada acompañante (separados por coma o salto de línea)
   const countPersonas = (a: Asistente) => {
-    const acomp = a.acompanantes?.split('\n').filter(l => l.trim()).length ?? 0;
-    return 1 + acomp;
+    if (!a.acompanantes || !a.acompanantes.trim()) return 1;
+    // Separar por comas o saltos de línea
+    const acompList = a.acompanantes
+      .split(/[,\n]/)
+      .map(s => s.trim())
+      .filter(Boolean);
+    return 1 + acompList.length;
   };
 
   const conBus = asistentes
