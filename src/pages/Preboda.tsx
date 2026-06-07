@@ -4,13 +4,17 @@ import { WEDDING_CONFIG } from '../config';
 import './Home.css';
 import './Preboda.css';
 
-const INITIAL_FORM = {
+type PrebodaForm = {
+  nombre: string;
+  apellidos: string;
+  acompanante: 'sí' | 'no';
+};
+
+const INITIAL_FORM: PrebodaForm = {
   nombre: '',
   apellidos: '',
   acompanante: 'no',
-} as const;
-
-type PrebodaForm = typeof INITIAL_FORM;
+};
 
 function Preboda() {
   const [formData, setFormData] = useState<PrebodaForm>(INITIAL_FORM);
