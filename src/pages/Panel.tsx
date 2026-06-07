@@ -25,6 +25,14 @@ type Cancion = {
   created_at?: string;
 };
 
+type PrebodaAttendee = {
+  id: number;
+  nombre: string;
+  apellidos: string;
+  acompanantes: string;
+  created_at?: string;
+};
+
 function sortBy<T>(arr: T[], key: keyof T, asc = true) {
   return [...arr].sort((a, b) => {
     if (a[key] === b[key]) return 0;
@@ -117,11 +125,12 @@ function Panel() {
   };
   const [asistentes, setAsistentes] = useState<Asistente[]>([]);
   const [canciones, setCanciones] = useState<Cancion[]>([]);
+  const [prebodaAsistentes, setPrebodaAsistentes] = useState<PrebodaAttendee[]>([]);
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState('');
   const [asistSort, setAsistSort] = useState<{ key: keyof Asistente; asc: boolean }>({ key: 'nombre', asc: true });
   const [cancionSort, setCancionSort] = useState<{ key: keyof Cancion; asc: boolean }>({ key: 'cancion', asc: true });
-  const [tab, setTab] = useState<'asistencia' | 'musica' | 'preferencias' | 'tallas'>('asistencia');
+  const [tab, setTab] = useState<'asistencia' | 'musica' | 'preferencias' | 'tallas' | 'preboda'>('asistencia');
 
   useEffect(() => {
     if (!auth) return;
@@ -130,9 +139,11 @@ function Panel() {
     Promise.all([
       fetch('/api/panel-asistencia').then(r => r.json()),
       fetch('/api/panel-canciones').then(r => r.json()),
-    ]).then(([asist, songs]) => {
+      fetch('/api/panel-preboda').then(r => r.json()),
+    ]).then(([asist, songs, preboda]) => {
       setAsistentes(asist.data || []);
       setCanciones(songs.data || []);
+      setPrebodaAsistentes(preboda.data || []);
       setLoading(false);
     }).catch((err) => {
       setFetchError(String(err));
@@ -220,6 +231,10 @@ function Panel() {
           <div className="panel__stat-number">{canciones.length}</div>
           <div className="panel__stat-label">Canciones</div>
         </div>
+        <div className="panel__stat">
+          <div className="panel__stat-number">{prebodaAsistentes.length}</div>
+          <div className="panel__stat-label">Preboda</div>
+        </div>
       </div>
 
       <div className="panel__tabs">
@@ -228,6 +243,9 @@ function Panel() {
         </button>
         <button className={`panel__tab${tab === 'musica' ? ' active' : ''}`} onClick={() => setTab('musica')}>
           Música
+        </button>
+        <button className={`panel__tab${tab === 'preboda' ? ' active' : ''}`} onClick={() => setTab('preboda')}>
+          Preboda
         </button>
         <button className={`panel__tab${tab === 'preferencias' ? ' active' : ''}`} onClick={() => setTab('preferencias')}>
           Dietas
@@ -387,6 +405,51 @@ function Panel() {
                           <td>{a.nombre} {a.apellidos}</td>
                           <td>{a.telefono}</td>
                           <td>{a.preferencias}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
+          </>
+        )}
+        {tab === 'preboda' && (
+          <>
+            <p className="panel__section-title">{prebodaAsistentes.length} asistentes a la preboda</p>
+            {loading ? <p className="panel__loading">Cargando...</p> : (
+              <>
+                <div className="panel__cards">
+                  {prebodaAsistentes.map((p) => (
+                    <div key={p.id} className="panel__card">
+                      <div className="panel__card-header" style={{ cursor: 'default' }}>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div className="panel__card-name">{p.nombre} {p.apellidos}</div>
+                          <div className="panel__card-meta" style={{ maxWidth: '100%', marginTop: 2 }}>
+                            {p.acompanantes ? `Acompañante: ${p.acompanantes}` : 'Sin acompañante'}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="panel__table-wrap">
+                  <table className="panel__table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Acompañantes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {prebodaAsistentes.map((p, idx) => (
+                        <tr key={p.id}>
+                          <td>{idx + 1}</td>
+                          <td>{p.nombre}</td>
+                          <td>{p.apellidos}</td>
+                          <td>{p.acompanantes || '-'}</td>
                         </tr>
                       ))}
                     </tbody>

@@ -1,5 +1,5 @@
 // Flag para mostrar/ocultar la página de la preboda
-export const SHOW_PREBODA = false;
+export const SHOW_PREBODA = true;
 // ============================================
 // CONFIGURACIÓN CENTRAL DE LA BODA
 // Edita estos valores con tu información real
@@ -161,16 +161,17 @@ export const WEDDING_CONFIG = {
   preboda: {
     date: {
       full: new Date('2026-08-21T20:00:00'),
-      display: '21 de Agosto de 2026',
+      display: '21 Agosto 2026',
     },
     time: {
-      start: '20:00',
-      end: '00:00',
+      start: '19:00',
+      end: '23:00',
     },
     venue: {
       name: 'Villa Pitusa',
       address: 'Casa de la abu de Pablo',
       mapsUrl: 'https://maps.app.goo.gl/Ja4uj7vc6Y6e1rc87?g_st=ic',
+      embedUrl: 'https://www.google.com/maps?q=Villa+Pitusa&output=embed',
     },
     parking: {
       mapsUrl: 'https://maps.app.goo.gl/8kPirmUZUDi4ojPPA?g_st=ic',

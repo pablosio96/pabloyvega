@@ -1,400 +1,311 @@
-/* Animation timing functions */
-:root {
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+.test-wedding {
+  min-height: 100vh;
 }
 
-.preboda-container {
-  padding: 40px 24px;
-  text-align: center;
-  margin-top: 80px;
-  min-height: calc(100vh - 80px);
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 100px;
-  background: var(--color-bg);
+.preboda-hero {
+  background: var(--tw-bg);
+  color: var(--tw-accent);
 }
 
-.preboda-container h1 {
-  font-size: clamp(28px, 6vw, 40px);
-  margin-bottom: 8px;
-  color: var(--color-accent-warm);
-  opacity: 0;
-  animation: slideUp 0.8s var(--ease-out-expo) 0.1s forwards;
+.preboda-hero .tw-hero__image-container,
+.preboda-hero .tw-hero__title-below {
+  background: var(--tw-bg);
 }
 
-.preboda-subtitle {
-  font-size: clamp(14px, 2vw, 18px);
-  color: var(--color-text-light);
-  margin-bottom: 40px;
-  opacity: 0;
-  animation: slideUp 0.8s var(--ease-out-expo) 0.2s forwards;
-}
-
-/* Info cards */
-.preboda-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 40px;
-  opacity: 0;
-  animation: slideUp 0.8s var(--ease-out-expo) 0.3s forwards;
-}
-
-.info-card {
+.preboda-hero .tw-hero__frame-section {
+  background-color: var(--tw-bg);
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px;
-  background: var(--color-bg-section);
-  border: 1px solid var(--color-border);
-  text-align: left;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  width: 100%;
 }
 
-.info-card.full-width {
+.preboda-hero .tw-hero__names {
+  color: var(--tw-accent);
+}
+
+.preboda-hero .tw-hero__image {
+  width: min(100%, 620px);
+}
+
+.preboda-frame-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 500px;
+  position: relative;
+  width: 100%;
+}
+
+.tw-hero__frame-image {
+  display: block;
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+}
+
+.preboda-frame-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 600px;
+  text-align: center;
+  z-index: 5;
+}
+
+.preboda-frame-text p {
+  font-size: clamp(1rem, 2.3vw, 1.3rem);
+  line-height: 1.55;
+  margin: 0.2rem 0;
+  color: var(--tw-accent);
+}
+
+.preboda-frame-date {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--tw-accent);
+}
+
+.preboda-frame-time {
+  font-weight: 500;
+  color: var(--tw-accent);
+}
+
+
+.preboda-hero-image-box {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 20px;
+}
+
+.tw-hero__image {
+  max-width: 100%;
+  object-fit: contain;
+  width: min(100%, 520px);
+}
+
+.tw-locations.preboda-locations {
+  background: var(--tw-accent);
+}
+
+.tw-locations.preboda-locations .tw-section-title,
+.tw-locations.preboda-locations .tw-locations__hint {
+  color: var(--tw-white);
+}
+
+.tw-locations.preboda-locations .tw-locations__hint {
+  text-shadow: none;
+}
+
+.tw-locations.preboda-locations .tw-flip-card__front,
+.tw-locations.preboda-locations .tw-flip-card__back {
+  background: var(--tw-accent);
+  pointer-events: none;
+}
+
+.tw-locations.preboda-locations .tw-flip-card__front {
+  z-index: 1;
+}
+
+.tw-locations.preboda-locations .tw-flip-card__back {
+  transform: rotateY(180deg);
+}
+
+.tw-locations.preboda-locations .tw-flip-card__frame,
+.tw-locations.preboda-locations .tw-flip-card__img {
+  background-color: #fff;
+}
+
+.tw-locations.preboda-locations .tw-flip-card__text h3,
+.tw-locations.preboda-locations .tw-flip-card__front p,
+.tw-locations.preboda-locations .tw-flip-card__front h3 {
+  color: var(--tw-white);
+}
+
+.tw-locations.preboda-locations .tw-flip-card__back-content {
+  pointer-events: auto;
+}
+
+.tw-locations.preboda-locations .tw-flip-card__back-content a.tw-btn {
+  background: var(--tw-white);
+  color: var(--tw-accent);
+  border-color: var(--tw-white);
+}
+
+.tw-rsvp {
+  padding: 3rem 1.5rem;
+}
+
+.tw-rsvp__form {
+  gap: 1.25rem;
+}
+
+.tw-rsvp__field.full {
   grid-column: 1 / -1;
 }
 
-.info-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 50%;
-  color: var(--color-accent);
-  flex-shrink: 0;
+.tw-rsvp__field label {
+  margin-bottom: 0.5rem;
 }
 
-.info-content h3 {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 4px;
+.tw-rsvp__radio-row {
+  gap: 0.8rem;
 }
 
-.info-content p {
-  font-size: 15px;
-  color: var(--color-text-light);
+.tw-btn.tw-btn--full {
+  margin-top: 1rem;
+}
+
+.preboda-form-header h2,
+.preboda-form-header p {
   margin: 0;
-  line-height: 1.5;
 }
 
-/* Maps section */
-.preboda-maps {
-  margin-bottom: 40px;
-  opacity: 0;
-  animation: slideUp 0.8s var(--ease-out-expo) 0.4s forwards;
+.preboda-form-header h2 {
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.05;
+  color: var(--preboda-text);
 }
 
-.preboda-maps h2 {
-  font-size: clamp(18px, 3vw, 22px);
-  color: var(--color-accent-warm);
-  margin-bottom: 20px;
-  font-weight: 400;
-}
-
-.maps-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.map-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 24px;
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
-  background: transparent;
-  color: var(--color-text);
-  border: 2px solid var(--color-border);
-  transition: all 0.3s ease;
-}
-
-.map-btn:hover {
-  border-color: var(--color-text);
-  background: var(--color-bg-section);
-}
-
-.map-btn.secondary {
-  background: transparent;
-  color: var(--color-text);
-  border: 2px solid var(--color-border);
-}
-
-.map-btn.secondary:hover {
-  border-color: var(--color-text);
-  background: var(--color-bg-section);
-}
-
-/* Description */
-.preboda-description {
-  max-width: 500px;
-  margin: 0 auto 40px;
-  opacity: 0;
-  animation: slideUp 0.8s var(--ease-out-expo) 0.5s forwards;
-}
-
-.preboda-description p {
+.preboda-form-header p {
+  margin-top: 16px;
+  color: var(--preboda-text-light);
   font-size: 16px;
-  color: var(--color-text-light);
-  line-height: 1.8;
-  font-style: italic;
-}
-
-/* Form section */
-.preboda-form-section {
-  max-width: 400px;
-  margin: 0 auto;
-  padding-top: 40px;
-  border-top: 1px solid var(--color-border);
-  opacity: 0;
-  animation: slideUp 0.8s var(--ease-out-expo) 0.6s forwards;
-}
-
-.preboda-form-section h2 {
-  font-size: clamp(18px, 3vw, 22px);
-  color: var(--color-accent-warm);
-  margin-bottom: 24px;
-  font-weight: 400;
+  line-height: 1.85;
 }
 
 .preboda-form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  gap: 22px;
 }
 
-/* Form field */
-.form-field {
-  position: relative;
-  text-align: left;
+.preboda-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
-.form-field input {
+.preboda-field {
+  display: grid;
+  gap: 10px;
+}
+
+.preboda-field.full {
+  grid-column: 1 / -1;
+}
+
+.preboda-field span {
+  font-size: 14px;
+  color: var(--preboda-text-light);
+}
+
+.preboda-field input,
+.preboda-field select {
   width: 100%;
-  padding: 20px 0 8px;
-  font-size: 16px;
-  border: none;
-  border-bottom: 1.5px solid var(--color-border);
-  border-radius: 0;
-  background: transparent;
-  transition: border-color 0.4s var(--ease-out-expo);
-  font-family: inherit;
-  color: var(--color-text);
-  box-sizing: border-box;
-}
-
-.form-field input::placeholder {
-  color: transparent;
-}
-
-.form-field input:focus {
-  outline: none;
-  border-bottom-color: var(--color-text);
-}
-
-.form-field label {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 16px;
-  color: var(--color-text-light);
-  pointer-events: none;
-  transition: all 0.3s var(--ease-out-expo);
-}
-
-.form-field input:focus + label,
-.form-field input:not(:placeholder-shown) + label {
-  top: 0;
-  font-size: 11px;
-  color: var(--color-text-light);
-}
-
-.field-hint {
-  font-size: 12px;
-  color: var(--color-text-light);
-  margin-top: 6px;
-  display: block;
-}
-
-/* Radio cards */
-.radio-card-group {
-  text-align: left;
-}
-
-.radio-card-label {
-  display: block;
+  padding: 16px 18px;
+  background: var(--preboda-input-bg);
+  border: 1px solid var(--preboda-input-border);
+  border-radius: 16px;
+  color: var(--preboda-text);
   font-size: 15px;
-  font-weight: 500;
-  color: var(--color-text);
-  margin-bottom: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.radio-cards {
-  display: flex;
+.preboda-field input:focus,
+.preboda-field select:focus {
+  outline: none;
+  border-color: var(--preboda-accent);
+  box-shadow: 0 0 0 4px rgba(51, 101, 179, 0.12);
+}
+
+.preboda-radio-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
-.radio-card {
-  flex: 1;
-  display: flex;
+.preboda-radio {
+  position: relative;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px;
-  border: 1.5px solid var(--color-border);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: transparent;
-}
-
-.radio-card input {
-  display: none;
-}
-
-.radio-card:hover {
-  border-color: var(--color-text-light);
-}
-
-.radio-card.selected {
-  border-color: var(--color-text);
-  background: var(--color-bg-section);
-}
-
-.radio-card span {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-text-light);
-}
-
-.radio-card.selected span {
-  color: var(--color-text);
-}
-
-/* Submit button */
-.submit-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 16px 32px;
-  font-size: 15px;
+  padding: 16px 18px;
+  border: 1px solid var(--preboda-input-border);
+  border-radius: 16px;
+  background: #f8fbff;
+  color: var(--preboda-text);
   font-weight: 600;
-  background: var(--color-text);
-  color: var(--color-bg);
-  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
-.submit-btn:hover:not(:disabled) {
-  background: var(--color-accent);
+.preboda-radio.selected {
+  background: rgba(51, 101, 179, 0.1);
+  border-color: rgba(51, 101, 179, 0.3);
 }
 
-.submit-btn:disabled {
-  opacity: 0.6;
+.preboda-radio input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preboda-submit-btn {
+  width: 100%;
+  padding: 18px 22px;
+  background: var(--preboda-btn);
+  color: #ffffff;
+  border: none;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.preboda-submit-btn:hover:not(:disabled) {
+  opacity: 0.96;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px rgba(51, 101, 179, 0.18);
+}
+
+.preboda-submit-btn:disabled {
+  opacity: 0.65;
   cursor: not-allowed;
 }
 
-.spinner {
-  animation: spin 1s linear infinite;
+.preboda-field-error {
+  color: #cc3d4f;
+  font-size: 13px;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Success message */
-.success-message {
-  text-align: center;
-  padding: 40px 20px;
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.success-icon {
-  color: var(--color-accent);
-  margin-bottom: 20px;
-}
-
-.success-message h3 {
-  font-size: 22px;
-  color: var(--color-text);
-  margin-bottom: 12px;
-  font-weight: 400;
-}
-
-.success-message p {
-  font-size: 16px;
-  color: var(--color-text-light);
-}
-
-/* Animations */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .preboda-container {
-    padding: 32px 20px;
-    padding-bottom: 80px;
+@media (max-width: 960px) {
+  .preboda-page {
+    padding: 32px 20px 60px;
   }
 
-  .preboda-info {
+  .preboda-form-row,
+  .preboda-hero-meta {
     grid-template-columns: 1fr;
   }
+}
 
-  .info-card {
-    padding: 16px;
+@media (max-width: 640px) {
+  .preboda-hero {
+    padding: 40px 24px;
   }
 
-  .info-icon {
-    width: 40px;
-    height: 40px;
+  .preboda-location-section,
+  .preboda-form-section {
+    padding: 32px 24px;
   }
 
-  .maps-buttons {
-    flex-direction: column;
-  }
-
-  .map-btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .radio-cards {
-    flex-direction: column;
-  }
-
-  .radio-card {
-    padding: 16px;
+  .preboda-flip-card {
+    height: 360px;
   }
 }

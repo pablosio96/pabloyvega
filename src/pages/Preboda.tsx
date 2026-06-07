@@ -1,245 +1,213 @@
 import { useState, useCallback } from 'react';
-import {
-  MapPin,
-  Clock,
-  CalendarBlank,
-  Car,
-  NavigationArrow,
-  Check,
-  CircleNotch,
-  User,
-  Users,
-  X
-} from '@phosphor-icons/react';
 import { useToast } from '../components/Toast';
 import { WEDDING_CONFIG } from '../config';
+import './Home.css';
 import './Preboda.css';
 
-const { preboda, api } = WEDDING_CONFIG;
+const INITIAL_FORM = {
+  nombre: '',
+  apellidos: '',
+  acompanante: 'no',
+} as const;
 
-interface FormData {
-  nombre: string;
-  asistira: string;
-  acompanantes: string;
-}
+type PrebodaForm = typeof INITIAL_FORM;
 
 function Preboda() {
-  const [formData, setFormData] = useState<FormData>({
-    nombre: '',
-    asistira: '',
-    acompanantes: '',
-  });
+  const [formData, setFormData] = useState<PrebodaForm>(INITIAL_FORM);
+  const [errors, setErrors] = useState<{ nombre?: string; apellidos?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [flipped, setFlipped] = useState(false);
   const { showToast } = useToast();
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      const { name, value } = event.target;
+      setFormData((prev) => ({ ...prev, [name]: value }));
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    },
+    [],
+  );
+
+  const toggleFlip = useCallback(() => {
+    setFlipped((prev) => !prev);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const nombre = formData.nombre.trim();
+      const apellidos = formData.apellidos.trim();
 
-    if (!formData.nombre.trim() || !formData.asistira) {
-      showToast('Por favor, completa los campos obligatorios', 'error');
-      return;
-    }
-
-    setIsSubmitting(true);
-    try {
-      const response = await fetch(api.preboda, {
-        redirect: 'follow',
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          tipo: 'preboda',
-          ...formData,
-          fecha: new Date().toISOString(),
-        }),
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        showToast('Error al enviar. Inténtalo de nuevo.', 'error');
+      const nextErrors: typeof errors = {};
+      if (!nombre) nextErrors.nombre = 'Escribe tu nombre';
+      if (!apellidos) nextErrors.apellidos = 'Escribe tus apellidos';
+      if (Object.keys(nextErrors).length > 0) {
+        setErrors(nextErrors);
+        return;
       }
-    } catch {
-      setIsSubmitted(true); // UX: mostrar éxito aunque falle
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+
+      setIsSubmitting(true);
+      try {
+        const response = await fetch(WEDDING_CONFIG.api.preboda, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre,
+            apellidos,
+            llevaAcompanante: formData.acompanante === 'sí',
+          }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data?.error || 'No se ha podido confirmar la preboda');
+        }
+
+        showToast('Confirmación de preboda enviada. Revisa tu correo.', 'success');
+        setFormData(INITIAL_FORM);
+      } catch (error) {
+        console.error('Preboda form error:', error);
+        showToast(error instanceof Error ? error.message : 'Error al enviar la confirmación', 'error');
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [formData, showToast, errors],
+  );
 
   return (
-    <main className="preboda-container page-enter" role="main" aria-label="Información de la preboda">
-      <h1>Preboda</h1>
-      <p className="preboda-subtitle">¡Empezamos a celebrar antes!</p>
-
-      {/* Información del evento */}
-      <section className="preboda-info">
-        <div className="info-card">
-          <div className="info-icon">
-            <CalendarBlank size={24} weight="light" />
-          </div>
-          <div className="info-content">
-            <h3>Fecha</h3>
-            <p>{preboda.date.display}</p>
-          </div>
+    <div className="test-wedding">
+      <section className="tw-hero preboda-hero">
+        <div className="tw-hero__image-container preboda-hero-image-box">
+          <img src="/images/wedding/baile_azul.png" alt="Dibujo de baile" className="tw-hero__image preboda-hero-blue-image" />
         </div>
 
-        <div className="info-card">
-          <div className="info-icon">
-            <Clock size={24} weight="light" />
-          </div>
-          <div className="info-content">
-            <h3>Horario</h3>
-            <p>{preboda.time.start} - {preboda.time.end}</p>
-          </div>
+        <div className="tw-hero__title-below preboda-hero-title-below">
+          <h1 className="tw-hero__names preboda-hero-title">Preboda</h1>
         </div>
 
-        <div className="info-card full-width">
-          <div className="info-icon">
-            <MapPin size={24} weight="light" />
-          </div>
-          <div className="info-content">
-            <h3>{preboda.venue.name}</h3>
-            <p>{preboda.venue.address}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Enlaces de Maps */}
-      <section className="preboda-maps">
-        <h2>¿Cómo llegar?</h2>
-        <div className="maps-buttons">
-          <a 
-            href={preboda.venue.mapsUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="map-btn"
-          >
-            <NavigationArrow size={20} weight="light" />
-            <span>Ubicación del evento</span>
-          </a>
-          <a 
-            href={preboda.parking.mapsUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="map-btn secondary"
-          >
-            <Car size={20} weight="light" />
-            <span>Dónde aparcar</span>
-          </a>
-        </div>
-      </section>
-
-      {/* Descripción */}
-      {preboda.description && (
-        <section className="preboda-description">
-          <p>{preboda.description}</p>
-        </section>
-      )}
-
-      {/* Formulario de asistencia */}
-      <section className="preboda-form-section">
-        <h2>¿Vienes a la preboda?</h2>
-        
-        {!isSubmitted ? (
-          <form onSubmit={handleSubmit} className="preboda-form" noValidate>
-            <div className="form-field">
-              <input
-                type="text"
-                name="nombre"
-                value={formData.nombre}
-                onChange={handleChange}
-                placeholder=" "
-                id="nombre"
-                required
-              />
-              <label htmlFor="nombre">Tu nombre *</label>
+        <div className="tw-hero__frame-section preboda-hero-frame-section">
+          <div className="tw-hero__frame-container preboda-frame-container">
+            <img src="/images/wedding/00_curvas_azul.png" alt="Marco decorativo" className="tw-hero__frame-image" />
+            <div className="tw-hero__frame-text preboda-frame-text">
+              <p className="preboda-frame-date">{WEDDING_CONFIG.preboda.date.display.toUpperCase()}</p>
+              <p className="preboda-frame-time">{WEDDING_CONFIG.preboda.time.start} - {WEDDING_CONFIG.preboda.time.end}</p>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="radio-card-group">
-              <span className="radio-card-label">¿Asistirás? *</span>
-              <div className="radio-cards">
-                <label className={`radio-card ${formData.asistira === 'sí' ? 'selected' : ''}`}>
-                  <input
-                    type="radio"
-                    name="asistira"
-                    value="sí"
-                    checked={formData.asistira === 'sí'}
-                    onChange={handleChange}
-                  />
-                  <Check size={18} weight="light" />
-                  <span>Sí, allí estaré</span>
-                </label>
-                <label className={`radio-card ${formData.asistira === 'no' ? 'selected' : ''}`}>
-                  <input
-                    type="radio"
-                    name="asistira"
-                    value="no"
-                    checked={formData.asistira === 'no'}
-                    onChange={handleChange}
-                  />
-                  <X size={18} weight="light" />
-                  <span>No puedo ir</span>
-                </label>
+      <section className="tw-locations preboda-locations">
+        <h2 className="tw-section-title tw-script">¿Dónde será?</h2>
+        <p className="tw-locations__hint">Pulsa la tarjeta para saber cómo llegar y aparcar.</p>
+
+        <div className="tw-locations__cards">
+          <div className={`tw-flip-card visible`} onClick={toggleFlip}>
+            <div className={`tw-flip-card__inner ${flipped ? 'flipped' : ''}`}>
+              <div className="tw-flip-card__front">
+                <span role="img" aria-label="Marco" className="tw-flip-card__frame" />
+                <span role="img" aria-label="Lugar de preboda" className="tw-flip-card__img" />
+                <div className="tw-flip-card__text">
+                  <h3>{WEDDING_CONFIG.preboda.venue.name.toUpperCase()}</h3>
+                  <p>{WEDDING_CONFIG.preboda.venue.address}</p>
+                </div>
+              </div>
+              <div className="tw-flip-card__back">
+                <span role="img" aria-label="Marco" className="tw-flip-card__frame" />
+                <div className="tw-flip-card__back-content">
+                  <a
+                    className="tw-btn tw-btn--light tw-btn--full"
+                    href={WEDDING_CONFIG.preboda.venue.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    Ver dirección
+                  </a>
+                  <a
+                    className="tw-btn tw-btn--light tw-btn--full"
+                    href={WEDDING_CONFIG.preboda.parking.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    Dónde aparcar
+                  </a>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {formData.asistira === 'sí' && (
-              <div className="form-field">
+      <section className="tw-rsvp">
+        <div className="tw-rsvp__inner">
+          <h2 className="tw-rsvp__title visible">Confirmar asistencia</h2>
+          <span className="tw-rsvp__decoration" />
+
+          <form className="tw-rsvp__form" onSubmit={handleSubmit}>
+            <div className="tw-rsvp__row">
+              <div className="tw-rsvp__field">
+                <label htmlFor="nombre">Nombre</label>
                 <input
+                  id="nombre"
+                  name="nombre"
                   type="text"
-                  name="acompanantes"
-                  value={formData.acompanantes}
+                  value={formData.nombre}
                   onChange={handleChange}
-                  placeholder=" "
-                  id="acompanantes"
+                  placeholder="Ej. María"
+                  autoComplete="given-name"
                 />
-                <label htmlFor="acompanantes">¿Vienes con alguien?</label>
-                <span className="field-hint">Nombres de tus acompañantes</span>
+                {errors.nombre && <span className="tw-rsvp__field-error">{errors.nombre}</span>}
               </div>
-            )}
+              <div className="tw-rsvp__field">
+                <label htmlFor="apellidos">Apellidos</label>
+                <input
+                  id="apellidos"
+                  name="apellidos"
+                  type="text"
+                  value={formData.apellidos}
+                  onChange={handleChange}
+                  placeholder="Ej. García Pérez"
+                  autoComplete="family-name"
+                />
+                {errors.apellidos && <span className="tw-rsvp__field-error">{errors.apellidos}</span>}
+              </div>
+            </div>
 
-            <button type="submit" className="submit-btn" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <>
-                  <CircleNotch size={18} className="spinner" />
-                  Enviando...
-                </>
-              ) : (
-                <>
-                  <Check size={18} weight="light" />
-                  Confirmar
-                </>
-              )}
+            <div className="tw-rsvp__field full">
+              <label>¿Llevas acompañante?</label>
+              <div className="tw-rsvp__radio-row">
+                <label className={`tw-rsvp__radio ${formData.acompanante === 'sí' ? 'selected' : ''}`}>
+                  <input
+                    type="radio"
+                    name="acompanante"
+                    value="sí"
+                    checked={formData.acompanante === 'sí'}
+                    onChange={handleChange}
+                  />
+                  Sí
+                </label>
+                <label className={`tw-rsvp__radio ${formData.acompanante === 'no' ? 'selected' : ''}`}>
+                  <input
+                    type="radio"
+                    name="acompanante"
+                    value="no"
+                    checked={formData.acompanante === 'no'}
+                    onChange={handleChange}
+                  />
+                  No
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" className="tw-btn tw-btn--full" disabled={isSubmitting}>
+              {isSubmitting ? 'Enviando...' : 'Confirmar asistencia'}
             </button>
           </form>
-        ) : (
-          <div className="success-message">
-            <div className="success-icon">
-              {formData.asistira === 'sí' ? (
-                <Users size={48} weight="light" />
-              ) : (
-                <User size={48} weight="light" />
-              )}
-            </div>
-            <h3>
-              {formData.asistira === 'sí' 
-                ? '¡Genial, te esperamos!' 
-                : 'Gracias por avisarnos'}
-            </h3>
-            <p>
-              {formData.asistira === 'sí'
-                ? 'Hemos registrado tu asistencia a la preboda.'
-                : 'Sentimos que no puedas venir, ¡nos vemos en la boda!'}
-            </p>
-          </div>
-        )}
+        </div>
       </section>
-    </main>
+    </div>
   );
 }
 

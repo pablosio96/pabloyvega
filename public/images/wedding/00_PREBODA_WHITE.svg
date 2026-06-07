@@ -1,0 +1,21 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="160" y="180" width="880" height="840" rx="96" fill="none" stroke="white" stroke-width="30" opacity="0.9" />
+  <rect x="240" y="260" width="360" height="240" rx="44" fill="white" opacity="0.08" />
+  <circle cx="420" cy="380" r="56" fill="white" opacity="0.12" />
+  <path d="M330 520C330 450 390 410 450 410C510 410 570 450 570 520C570 560 530 620 450 620C370 620 330 560 330 520Z" fill="white" opacity="0.1" />
+  <path d="M350 520C350 470 390 440 450 440C510 440 550 470 550 520C550 550 530 590 450 590C370 590 350 550 350 520Z" fill="white" opacity="0.24" />
+  <circle cx="450" cy="500" r="40" fill="white" opacity="0.9" />
+  <path d="M480 500C480 470 500 450 530 450C560 450 580 470 580 500C580 540 540 580 530 590C520 580 480 540 480 500Z" fill="white" />
+  <path d="M740 440H900" stroke="white" stroke-width="28" stroke-linecap="round" opacity="0.95" />
+  <path d="M740 520H900" stroke="white" stroke-width="28" stroke-linecap="round" opacity="0.95" />
+  <path d="M780 370H860" stroke="white" stroke-width="28" stroke-linecap="round" opacity="0.95" />
+  <path d="M560 760C560 710 610 670 660 670C710 670 760 710 760 760C760 790 740 830 660 900C580 830 560 790 560 760Z" fill="white" opacity="0.95" />
+  <path d="M660 680C690 650 760 650 790 680C820 710 820 760 790 790C760 820 690 820 660 790C630 760 630 710 660 680Z" fill="white" />
+  <path d="M720 700C720 680 740 660 760 660C780 660 800 680 800 700C800 720 780 740 760 760C740 740 720 720 720 700Z" fill="white" />
+  <path d="M320 950C360 910 440 890 510 900C590 910 680 950 740 1000" stroke="white" stroke-width="34" stroke-linecap="round" opacity="0.14" />
+  <path d="M920 260C940 220 980 200 1020 200C1060 200 1090 240 1090 280" stroke="white" stroke-width="22" stroke-linecap="round" opacity="0.8" />
+  <circle cx="220" cy="220" r="18" fill="white" opacity="0.7" />
+  <circle cx="1040" cy="190" r="12" fill="white" opacity="0.7" />
+  <circle cx="960" cy="340" r="20" fill="white" opacity="0.35" />
+  <circle cx="300" cy="320" r="14" fill="white" opacity="0.3" />
+</svg>
