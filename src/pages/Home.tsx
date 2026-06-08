@@ -84,6 +84,23 @@ function Home({ showBus = true }: { showBus?: boolean }) {
   const [rsvpSent, setRsvpSent] = useState(false);
   const [rsvpSending, setRsvpSending] = useState(false);
   const [rsvpError, setRsvpError] = useState('');
+  const [showBusState, setShowBusState] = useState<boolean>(showBus);
+
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      // soporta ?showBus=false o ?noBus=1
+      if (params.has('showBus')) {
+        const v = params.get('showBus')?.toLowerCase();
+        setShowBusState(v !== 'false' && v !== '0');
+      } else if (params.has('noBus')) {
+        const v = params.get('noBus')?.toLowerCase();
+        setShowBusState(!(v === '1' || v === 'true'));
+      }
+    } catch (e) {
+      // ignore
+    }
+  }, []);
   const [musicSong, setMusicSong] = useState('');
   const [musicArtist, setMusicArtist] = useState('');
   const [musicName, setMusicName] = useState('');
@@ -138,7 +155,7 @@ function Home({ showBus = true }: { showBus?: boolean }) {
     } else if (!EMAIL_REGEX.test(rsvp.email)) {
       newErrors.email = 'Email inválido';
     }
-    if (showBus) {
+    if (showBusState) {
       if (!rsvp.bus) {
         newErrors.bus = 'Indica si necesitas autobús';
       } else if (rsvp.bus === 'sí' && !rsvp.parada) {
@@ -153,7 +170,7 @@ function Home({ showBus = true }: { showBus?: boolean }) {
     setRsvpSending(true);
     setRsvpError('');
     try {
-      const payload = showBus ? rsvp : { ...rsvp, bus: 'no', parada: '' };
+      const payload = showBusState ? rsvp : { ...rsvp, bus: 'no', parada: '' };
       const response = await fetch(WEDDING_CONFIG.api.attendance, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -392,7 +409,7 @@ function Home({ showBus = true }: { showBus?: boolean }) {
             </div>
 
             {/* Bus */}
-            {showBus && (
+            {showBusState && (
               <>
                 <div className="tw-rsvp__field full">
                   <label>¿NECESITAS SERVICIO DE AUTOBÚS?</label>
